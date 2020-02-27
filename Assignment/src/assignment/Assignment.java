@@ -16,7 +16,12 @@ public class Assignment {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("test");
+        //TODO
+        //1. Define UI Class --> GUI
+        //2. Calculation Logic with proper method --> Stock 
+        //3. Text Editing(db) w method --> DB
+        //4. Admin Page --> GUI 
+        //5. Stock Management --> Stock
     }
     
 }
