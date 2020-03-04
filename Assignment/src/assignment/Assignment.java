@@ -23,5 +23,5 @@ public class Assignment {
         //4. Admin Page --> GUI 
         //5. Stock Management --> Stock
     }
-    
+
 }

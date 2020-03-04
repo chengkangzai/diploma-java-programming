@@ -13,26 +13,21 @@ import java.util.logging.Logger;
 
 public class Project7 {
 
-    public static void main(String[] args) {
-        //demoCode();
-        //Get Current time
-        LocalDateTime date = LocalDateTime.now();
-        String now = date.toString() + System.lineSeparator();
-        //String now = date.toString() + "\n";
+    public static void main(final String[] args) {
+        // demoCode();
+        // Get Current time
+        final LocalDateTime date = LocalDateTime.now();
+        final String now = date.toString() + System.lineSeparator();
+        // String now = date.toString() + "\n";
 
-        //write to file 
-        String fileName = "now.txt";
+        // write to file
+        final String fileName = "now.txt";
 
-        //Aware ! Path !== Paths
-        Path path = Paths.get(fileName);
+        // Aware ! Path !== Paths
+        final Path path = Paths.get(fileName);
         try {
-            Files.write(
-                    path,
-                    now.getBytes(),
-                    StandardOpenOption.CREATE,
-                    StandardOpenOption.APPEND
-            );
-        } catch (IOException e) {
+            Files.write(path, now.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+        } catch (final IOException e) {
             System.out.println(e);
         }
         System.out.println("Done !");
@@ -41,7 +36,7 @@ public class Project7 {
 
         try {
             Thread.sleep(3000);
-            List<String> container = Files.readAllLines(path);
+            final List<String> container = Files.readAllLines(path);
             container.forEach((line) -> {
                 System.out.println(line);
             });
@@ -49,29 +44,22 @@ public class Project7 {
         } catch (IOException | InterruptedException e) {
             System.out.println(e.getMessage());
         }
-        
-        
-    
 
+    }
 
-    
-
-}
-
-/*
-    Demo: Write Todays timestamp to the file 
-    File name : now.txt
- */
-static void demoCode() {
-        //API: LocalDateTime
-        //LocalDateTime now = LocalDateTime.now();
-        //System.out.println(now.toString());
+    /*
+     * Demo: Write Todays timestamp to the file File name : now.txt
+     */
+    static void demoCode() {
+        // API: LocalDateTime
+        // LocalDateTime now = LocalDateTime.now();
+        // System.out.println(now.toString());
         for (int i = 0; i < 10; i++) {
             try {
-                //Thread is Process
+                // Thread is Process
                 Thread.sleep(2000);
                 System.out.println(LocalDateTime.now().toString());
-            } catch (InterruptedException e) {
+            } catch (final InterruptedException e) {
                 System.out.println(e.getMessage());
             }
         }
