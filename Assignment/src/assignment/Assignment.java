@@ -15,6 +15,7 @@ public class Assignment {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        DB.echoSplited();
         // TODO code application logic here
         //TODO
         //1. Define UI Class --> GUI
