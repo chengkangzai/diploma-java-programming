@@ -27,21 +27,224 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        No3pic = new javax.swing.JLabel();
+        No4pic = new javax.swing.JLabel();
+        No1pic = new javax.swing.JLabel();
+        No2pic = new javax.swing.JLabel();
+        No7pic = new javax.swing.JLabel();
+        No5pic = new javax.swing.JLabel();
+        No8pic = new javax.swing.JLabel();
+        No6pic = new javax.swing.JLabel();
+        Buy1 = new javax.swing.JButton();
+        Buy2 = new javax.swing.JButton();
+        Buy3 = new javax.swing.JButton();
+        Buy4 = new javax.swing.JButton();
+        Buy5 = new javax.swing.JButton();
+        Buy6 = new javax.swing.JButton();
+        Buy7 = new javax.swing.JButton();
+        Buy8 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        No3pic.setIcon(new javax.swing.JLabel() {
+            public javax.swing.Icon getIcon() {
+                try {
+                    return new javax.swing.ImageIcon(
+                        new java.net.URL("file:/D:/Users/ASUS/Documents/NetBeansProjects/Assignment/src/assignment/asset/pic/temp/3.jpg")
+                    );
+                } catch (java.net.MalformedURLException e) {
+                }
+                return null;
+            }
+        }.getIcon());
+
+        No4pic.setIcon(new javax.swing.JLabel() {
+            public javax.swing.Icon getIcon() {
+                try {
+                    return new javax.swing.ImageIcon(
+                        new java.net.URL("file:/D:/Users/ASUS/Documents/NetBeansProjects/Assignment/src/assignment/asset/pic/temp/4.jpg")
+                    );
+                } catch (java.net.MalformedURLException e) {
+                }
+                return null;
+            }
+        }.getIcon());
+
+        No1pic.setIcon(new javax.swing.JLabel() {
+            public javax.swing.Icon getIcon() {
+                try {
+                    return new javax.swing.ImageIcon(
+                        new java.net.URL("file:/D:/Users/ASUS/Documents/NetBeansProjects/Assignment/src/assignment/asset/pic/temp/1.jpg")
+                    );
+                } catch (java.net.MalformedURLException e) {
+                }
+                return null;
+            }
+        }.getIcon());
+
+        No2pic.setIcon(new javax.swing.JLabel() {
+            public javax.swing.Icon getIcon() {
+                try {
+                    return new javax.swing.ImageIcon(
+                        new java.net.URL("file:/D:/Users/ASUS/Documents/NetBeansProjects/Assignment/src/assignment/asset/pic/temp/2.jpg")
+                    );
+                } catch (java.net.MalformedURLException e) {
+                }
+                return null;
+            }
+        }.getIcon());
+
+        No7pic.setIcon(new javax.swing.JLabel() {
+            public javax.swing.Icon getIcon() {
+                try {
+                    return new javax.swing.ImageIcon(
+                        new java.net.URL("file:/D:/Users/ASUS/Documents/NetBeansProjects/Assignment/src/assignment/asset/pic/temp/7.jpg")
+                    );
+                } catch (java.net.MalformedURLException e) {
+                }
+                return null;
+            }
+        }.getIcon());
+
+        No5pic.setIcon(new javax.swing.JLabel() {
+            public javax.swing.Icon getIcon() {
+                try {
+                    return new javax.swing.ImageIcon(
+                        new java.net.URL("file:/D:/Users/ASUS/Documents/NetBeansProjects/Assignment/src/assignment/asset/pic/temp/5.jpg")
+                    );
+                } catch (java.net.MalformedURLException e) {
+                }
+                return null;
+            }
+        }.getIcon());
+
+        No8pic.setBackground(new java.awt.Color(255, 255, 255));
+        No8pic.setForeground(new java.awt.Color(255, 255, 255));
+        No8pic.setIcon(new javax.swing.JLabel() {
+            public javax.swing.Icon getIcon() {
+                try {
+                    return new javax.swing.ImageIcon(
+                        new java.net.URL("file:/D:/Users/ASUS/Documents/NetBeansProjects/Assignment/src/assignment/asset/pic/temp/8.jpg")
+                    );
+                } catch (java.net.MalformedURLException e) {
+                }
+                return null;
+            }
+        }.getIcon());
+
+        No6pic.setIcon(new javax.swing.JLabel() {
+            public javax.swing.Icon getIcon() {
+                try {
+                    return new javax.swing.ImageIcon(
+                        new java.net.URL("file:/D:/Users/ASUS/Documents/NetBeansProjects/Assignment/src/assignment/asset/pic/temp/6.jpg")
+                    );
+                } catch (java.net.MalformedURLException e) {
+                }
+                return null;
+            }
+        }.getIcon());
+
+        Buy1.setText("Buy");
+        Buy1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Buy1ActionPerformed(evt);
+            }
+        });
+
+        Buy2.setText("Buy");
+
+        Buy3.setText("Buy");
+
+        Buy4.setText("Buy");
+
+        Buy5.setText("Buy");
+
+        Buy6.setText("Buy");
+
+        Buy7.setText("Buy");
+
+        Buy8.setText("Buy");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Buy5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Buy6, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Buy7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Buy8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(No5pic)
+                                .addGap(18, 18, 18)
+                                .addComponent(No6pic)
+                                .addGap(18, 18, 18)
+                                .addComponent(No7pic)
+                                .addGap(18, 18, 18)
+                                .addComponent(No8pic))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(No1pic)
+                                .addGap(18, 18, 18)
+                                .addComponent(No2pic)
+                                .addGap(18, 18, 18)
+                                .addComponent(No3pic)
+                                .addGap(18, 18, 18)
+                                .addComponent(No4pic)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(Buy1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(Buy2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(Buy3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(Buy4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(345, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(115, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(No2pic)
+                    .addComponent(No4pic)
+                    .addComponent(No1pic)
+                    .addComponent(No3pic))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Buy1)
+                    .addComponent(Buy2)
+                    .addComponent(Buy3)
+                    .addComponent(Buy4))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(No6pic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(No5pic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(No7pic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(No8pic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Buy5)
+                    .addComponent(Buy6)
+                    .addComponent(Buy7)
+                    .addComponent(Buy8))
+                .addGap(44, 44, 44))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Buy1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buy1ActionPerformed
+         GUI_Class.test();         
+         //GUI_Class.showPopUp();
+    }//GEN-LAST:event_Buy1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +282,21 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Buy1;
+    private javax.swing.JButton Buy2;
+    private javax.swing.JButton Buy3;
+    private javax.swing.JButton Buy4;
+    private javax.swing.JButton Buy5;
+    private javax.swing.JButton Buy6;
+    private javax.swing.JButton Buy7;
+    private javax.swing.JButton Buy8;
+    private javax.swing.JLabel No1pic;
+    private javax.swing.JLabel No2pic;
+    private javax.swing.JLabel No3pic;
+    private javax.swing.JLabel No4pic;
+    private javax.swing.JLabel No5pic;
+    private javax.swing.JLabel No6pic;
+    private javax.swing.JLabel No7pic;
+    private javax.swing.JLabel No8pic;
     // End of variables declaration//GEN-END:variables
 }

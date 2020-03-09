@@ -18,6 +18,7 @@ public class DB {
         System.out.println("Testing");
         System.out.println("You are opening DB class");
     }
+
     public static final String FILENAME = "stock.csv";
     final static Path dbPath = Paths.get(FILENAME);
 
@@ -49,9 +50,7 @@ public class DB {
     }
 
     public static void echoAll() {
-        String[] data = returnAll();
-        System.out.print(Arrays.toString(data));
-        System.out.println("\n");
+        System.out.println(Arrays.toString(returnAll()) + "\n");
     }
 
     public static void echoSplited() {
@@ -92,13 +91,23 @@ public class DB {
 
     }
 
+    public static void getStockByID(int id) {
+        //find the line with appriate id 
+
+    }
+    public static void modifyLine(int id, String name, int stock, double price) {
+        //replace the line 
+
+    }
+
+
     //DB Stucter
-    // ID , Name , Price , Stock , Image , Available 
+    // ID , Name , Price , Stock , Image , Available  V
     //TODO 
-    //1.Read the file 
-    //1.1 Read all record
-    //1.2 Read by line
-    //1.3 Read without headling (table)
+    //1.Read the file V
+    //1.1 Read all record V
+    //1.2 Read by line V
+    //1.3 Read without headling (table) V
     //1.4 Read with vertain ID given
     //2. Data Validation 
     //2.1 Not Negative number for price, Stock
