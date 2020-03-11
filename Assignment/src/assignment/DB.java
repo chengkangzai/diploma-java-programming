@@ -1,16 +1,20 @@
 package assignment;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.sound.sampled.SourceDataLine;
+
+import sun.security.util.ArrayUtil;
 
 public class DB {
 
@@ -23,10 +27,8 @@ public class DB {
     final static Path dbPath = Paths.get(FILENAME);
 
     public static String[] returnAll() {
-        //System.out.println("--------------Retun All Start--------------");
         List<String> data = null;
         try {
-            //System.out.println("--------------Reading All Line from " + FILENAME + "--------------");
             data = Files.readAllLines(dbPath);
         } catch (IOException ex) {
             System.out.println("Error!");
@@ -46,7 +48,47 @@ public class DB {
             head = Arrays.asList(header);
         }
         return head.toArray();
+    }
 
+    public static ArrayList<String> returnAllPicUrl() {
+        @SuppressWarnings("unchecked")
+        ArrayList<String> picUrl = new ArrayList<String>();
+        String[] data = returnAll();
+        for (int i = 1; i < data.length; i++) {
+            // Spilit the data by ,
+            String[] split = data[i].split("\\,");
+            for (int j = 5; j < split.length; j++) {
+                // Add to an array
+                picUrl.add(split[j]);
+            }
+        }
+        return picUrl;
+    }
+
+    public static ArrayList<String> returnAllStockName() {
+        @SuppressWarnings("unchecked")
+        ArrayList<String> stockName = new ArrayList<String>();
+        for (int i = 1; i < DB.returnAll().length; i++) {
+            String id = String.valueOf(i);
+            String e = getStockNameByID(id);
+            stockName.add(e);
+        }
+        return stockName;
+    }
+
+    public static ArrayList<String> returnAllStockPrice() {
+        @SuppressWarnings("unchecked")
+        ArrayList<String> stockPrice = new ArrayList<String>();
+        for (int i = 1; i < DB.returnAll().length; i++) {
+            String id = String.valueOf(i);
+            String e = getStockPriceByID(id);
+            if (!(e.contains("."))) {
+                e += ".00";
+            }
+            stockPrice.add(e);
+
+        }
+        return stockPrice;
     }
 
     public static void echoAll() {
@@ -58,14 +100,15 @@ public class DB {
         Object[] header = returnHeader();
         int x = 0;
         for (int i = 1; i < data.length; i++) {
+            // Spilit the data by ,
             String[] split = data[i].split("\\,");
             for (int j = 0; j < split.length; j++) {
                 System.out.print(header[x] + " : " + split[j] + "\n");
                 if (x < header.length - 1) {
-                    //Add counter
+                    // Add counter
                     x++;
                 } else {
-                    //Reset counter
+                    // Reset counter
                     System.out.println("--------------------------");
                     x = 0;
                 }
@@ -76,44 +119,150 @@ public class DB {
     public static void addLine() {
         Scanner read = new Scanner(System.in);
         Object[] header = returnHeader();
-        String addline = returnAll().length + "|";
-        for (int i = 1; i < header.length; i++) {
+        String addLine = returnAll().length + ",";
+        for (int i = 1; i < header.length - 1; i++) {
             System.out.println("Please enter value of " + header[i]);
-            String line = read.next();
-            addline += line + " |";
+            String line = read.nextLine();
+            addLine += line + ",";
         }
+        System.out.println("Please enter value of Picture Number");
+        String line = read.nextLine();
+        addLine += "src/assignment/asset/pic/temp/" + line + ".jpg";
+
         try {
             System.out.println("adding to database");
-            Files.write(dbPath, addline.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            Files.write(dbPath, addLine.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
         } catch (IOException ex) {
             Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
 
-    public static void getStockByID(int id) {
-        //find the line with appriate id 
-
+    public static ArrayList<String> getAllStockByID(String id) {
+        String[] data = returnAll();
+        @SuppressWarnings("unchecked")
+        ArrayList<String> s = new ArrayList<String>();
+        for (int i = 1; i < data.length; i++) {
+            // Spilit the data by ,
+            String[] split = data[i].split("\\,");
+            for (int j = 1; j < 2; j++) {
+                // Get ID only
+                if (id.equals(split[j])) {
+                    System.out.println("Gotcha");
+                    String stockName = split[j + 1];
+                    String stockPrice = split[j + 2];
+                    String stockStock = split[j + 3];
+                    String stockAvail = split[j + 4];
+                }
+            }
+        }
+        return s;
+        // find the line with appriate id
     }
+
+    public static String getStockNameByID(String id) {
+        String stockName = null;
+        String[] data = returnAll();
+        @SuppressWarnings("unchecked")
+        ArrayList<String> s = new ArrayList<String>();
+        for (int i = 1; i < data.length; i++) {
+            // Spilit the data by ,
+            String[] split = data[i].split("\\,");
+            for (int j = 0; j < 1; j++) {
+                if (id.equals(split[j])) {
+                    stockName = split[j + 1];
+                }
+            }
+        }
+        return stockName;
+    }
+
+    public static String getStockPriceByID(String id) {
+        String price = null;
+        String[] data = returnAll();
+        @SuppressWarnings("unchecked")
+        ArrayList<String> s = new ArrayList<String>();
+        for (int i = 1; i < data.length; i++) {
+            // Spilit the data by ,
+            String[] split = data[i].split("\\,");
+            for (int j = 0; j < 1; j++) {
+                if (id.equals(split[j])) {
+                    price = split[j + 2];
+                }
+            }
+        }
+        return price;
+    }
+
+    public static String getStockByID(String id) {
+        String stock = null;
+        String[] data = returnAll();
+        @SuppressWarnings("unchecked")
+        ArrayList<String> s = new ArrayList<String>();
+        for (int i = 1; i < data.length; i++) {
+            // Spilit the data by ,
+            String[] split = data[i].split("\\,");
+            for (int j = 0; j < 1; j++) {
+                if (id.equals(split[j])) {
+                    stock = split[j + 3];
+                }
+            }
+        }
+        return stock;
+    }
+
+    public static String getStockAvailabilityByID(String id) {
+        String availability = null;
+        String[] data = returnAll();
+        @SuppressWarnings("unchecked")
+        ArrayList<String> s = new ArrayList<String>();
+        for (int i = 1; i < data.length; i++) {
+            // Spilit the data by ,
+            String[] split = data[i].split("\\,");
+            for (int j = 0; j < 1; j++) {
+                if (id.equals(split[j])) {
+                    availability = split[j + 4];
+                }
+            }
+        }
+        return availability;
+    }
+
+    public static String getStockImageByID(String id) {
+        String img = null;
+        String[] data = returnAll();
+        @SuppressWarnings("unchecked")
+        ArrayList<String> s = new ArrayList<String>();
+        for (int i = 1; i < data.length; i++) {
+            // Spilit the data by ,
+            String[] split = data[i].split("\\,");
+            for (int j = 0; j < 1; j++) {
+                if (id.equals(split[j])) {
+                    img = split[j + 5];
+                }
+            }
+        }
+        return img;
+    }
+
     public static void modifyLine(int id, String name, int stock, double price) {
-        //replace the line 
+        // replace the line
 
     }
 
-
-    //DB Stucter
-    // ID , Name , Price , Stock , Image , Available  V
-    //TODO 
-    //1.Read the file V
-    //1.1 Read all record V
-    //1.2 Read by line V
-    //1.3 Read without headling (table) V
-    //1.4 Read with vertain ID given
-    //2. Data Validation 
-    //2.1 Not Negative number for price, Stock
-    //2.2 All fill are required 
-    //3. Write / Modify the file
-    //3.1 Write New Line
-    //3.1.1 Upload Picture ...
-    //3.2 Change certain value with ID given
+    // DB Stucter
+    // ID , Name , Price , Stock , Image , Available V
+    // TODO
+    // 1.Read the file V
+    // 1.1 Read all record V
+    // 1.2 Read by line V
+    // 1.3 Read without headling (table) V
+    // 1.4 Read with vertain ID given V
+    // 2. Data Validation
+    // 2.1 Not Negative number for price, Stock
+    // 2.2 All fill are required
+    // 3. Write / Modify the file
+    // 3.1 Write New Line
+    // 3.1.1 Upload Picture ...
+    // 3.2 Change certain value with ID given
 }
