@@ -1,4 +1,4 @@
 ID,NAME,PRICE,IN-STOCK,AVAILABILITY,IMAGE
-1,Coca-Cola,2,10,T,D:/Users/ASUS/Documents/NetBeansProjects/Assignment/src/assignment/asset/pic/temp/8.jpg
-2,Pepsi,2,10,T,D:/Users/ASUS/Documents/NetBeansProjects/Assignment/src/assignment/asset/pic/temp/7.jpg
-3,Mineral,1,9,T,D:/Users/ASUS/Documents/NetBeansProjects/Assignment/src/assignment/asset/pic/temp/1.jpg
+1,Coca-Cola,2,10,T,src/assignment/asset/pic/temp/8.jpg
+2,Pepsi,2,10,T,src/assignment/asset/pic/temp/7.jpg
+3,Mineral,1,9,T,src/assignment/asset/pic/temp/1.jpg
