@@ -9,7 +9,7 @@ public class GUI_Class {
         final JFrame parent = new JFrame();
         parent.setVisible(true);
 
-        //JOptionPane.showInputDialog(parent, "What is your name?", null);
+        // JOptionPane.showInputDialog(parent, "What is your name?", null);
         final int showConfirmDialog = JOptionPane.showConfirmDialog(parent, s);
         switch (showConfirmDialog) {
             case 0:
@@ -27,7 +27,12 @@ public class GUI_Class {
         }
         parent.setVisible(false);
     }
-    
 
-    
+    public static void showMessageBox(String message) {
+        final JFrame parent = new JFrame();
+        parent.setVisible(true);
+        JOptionPane.showMessageDialog(parent, message, "Pop Up", 0);
+        parent.setVisible(false);
+    }
+
 }
