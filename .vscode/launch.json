@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-UserList<NetBeansProjects_8b819c96>",
+            "request": "launch",
+            "mainClass": "GUI.UserList",
+            "projectName": "NetBeansProjects_8b819c96"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Tutorial8<NetBeansProjects_8b819c96>",
+            "request": "launch",
+            "mainClass": "tutorial8.Tutorial8",
+            "projectName": "NetBeansProjects_8b819c96"
+        }
+    ]
+}
