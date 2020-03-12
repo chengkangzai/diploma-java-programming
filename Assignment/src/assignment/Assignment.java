@@ -24,10 +24,10 @@ public class Assignment {
         //}
         //DB.addLine();
 
-        ArrayList<String> ss = DB.returnAllStockPrice();
-        for (int i = 0; i < ss.size(); i++) {
-            System.out.println(i + " is = " + ss.get(i));
-        }
+        //ArrayList<String> ss = DB.returnAllStockPrice();
+        //for (int i = 0; i < ss.size(); i++) {
+        //    System.out.println(i + " is = " + ss.get(i));
+        //}
         GUI gui = new GUI();
         gui.setVisible(true);
         //1. Define UI Class --> GUI
