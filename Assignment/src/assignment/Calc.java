@@ -1,10 +1,10 @@
 
 package assignment;
 
-public class Stock {
+public class Calc {
     public static void test() {
         System.out.println("Testing");
-        System.out.println("You are opening Stock class");
+        System.out.println("You are opening calc class");
     }
     //TODO 
     //1. Check out Stock 
