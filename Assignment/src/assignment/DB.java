@@ -12,9 +12,6 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.sound.sampled.SourceDataLine;
-
-import sun.security.util.ArrayUtil;
 
 public class DB {
 
@@ -26,7 +23,7 @@ public class DB {
     public static final String FILENAME = "stock.csv";
     final static Path dbPath = Paths.get(FILENAME);
 
-    public static String[] returnAll() {
+    private static String[] returnAll() {
         List<String> data = null;
         try {
             data = Files.readAllLines(dbPath);
@@ -40,7 +37,7 @@ public class DB {
         return container;
     }
 
-    public static Object[] returnHeader() {
+    private static Object[] returnHeader() {
         String[] data = returnAll();
         List<String> head = null;
         for (int i = 0; i < 1; i++) {
@@ -117,6 +114,9 @@ public class DB {
     }
 
     public static void addLine() {
+        //TODO :
+        // No Negative number for price, stock
+        // NO word beside T/F for Avail 
         Scanner read = new Scanner(System.in);
         Object[] header = returnHeader();
         String addLine = returnAll().length + ",";
@@ -249,6 +249,11 @@ public class DB {
         // replace the line
 
     }
+    
+    public static void reduceStock(int id, int amout) {
+        
+    }
+
 
     // DB Stucter
     // ID , Name , Price , Stock , Image , Available V
