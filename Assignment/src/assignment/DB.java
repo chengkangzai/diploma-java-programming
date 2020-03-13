@@ -1,10 +1,12 @@
 package assignment;
 
 import java.io.IOException;
+import static java.lang.Math.PI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,12 +14,14 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.sound.sampled.SourceDataLine;
 
 public class DB {
 
     public static final void testing() {
-        System.out.println("Testing");
-        System.out.println("You are opening DB class");
+        System.out.printf("Value with 3 digits after decimal point %.3f %n", PI);
+        DecimalFormat df = new DecimalFormat("###.###");
+        System.out.println(df.format(PI));
     }
 
     public static final String FILENAME = "stock.csv";
@@ -114,9 +118,9 @@ public class DB {
     }
 
     public static void addLine() {
-        //TODO :
+        // TODO :
         // No Negative number for price, stock
-        // NO word beside T/F for Avail 
+        // NO word beside T/F for Avail
         Scanner read = new Scanner(System.in);
         Object[] header = returnHeader();
         String addLine = returnAll().length + ",";
@@ -249,11 +253,10 @@ public class DB {
         // replace the line
 
     }
-    
-    public static void reduceStock(int id, int amout) {
-        
-    }
 
+    public static void reduceStock(int id, int amout) {
+
+    }
 
     // DB Stucter
     // ID , Name , Price , Stock , Image , Available V
