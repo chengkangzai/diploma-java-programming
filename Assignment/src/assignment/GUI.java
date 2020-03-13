@@ -69,14 +69,15 @@ public final class GUI extends javax.swing.JFrame {
             Price2.setText(price.get(1));
             Price3.setText(price.get(2));
             Price4.setText(price.get(3));
-            Price3.setText(price.get(4));
-            Price4.setText(price.get(5));
+            Price5.setText(price.get(4));
+            Price6.setText(price.get(5));
             Price7.setText(price.get(6));
             Price8.setText(price.get(7));
         } else {
             GUI_Class.showMessageBox("Not enough record in Database");
         }
     }
+
 
     /**
      * Creates new form GUI
@@ -86,6 +87,7 @@ public final class GUI extends javax.swing.JFrame {
         initializeImageIcon();
         initializeName();
         initializePrice();
+        
     }
 
     /**
@@ -102,17 +104,22 @@ public final class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        No3pic = new javax.swing.JLabel();
-        No4pic = new javax.swing.JLabel();
         No1pic = new javax.swing.JLabel();
         No2pic = new javax.swing.JLabel();
-        No7pic = new javax.swing.JLabel();
+        No3pic = new javax.swing.JLabel();
+        No4pic = new javax.swing.JLabel();
         No5pic = new javax.swing.JLabel();
-        No8pic = new javax.swing.JLabel();
         No6pic = new javax.swing.JLabel();
+        No7pic = new javax.swing.JLabel();
+        No8pic = new javax.swing.JLabel();
         Buy1 = new javax.swing.JButton();
         Buy2 = new javax.swing.JButton();
         Buy3 = new javax.swing.JButton();
@@ -123,39 +130,38 @@ public final class GUI extends javax.swing.JFrame {
         Buy8 = new javax.swing.JButton();
         Price1 = new javax.swing.JLabel();
         Price2 = new javax.swing.JLabel();
-        Name1 = new javax.swing.JLabel();
-        Name2 = new javax.swing.JLabel();
-        Price5 = new javax.swing.JLabel();
-        Price6 = new javax.swing.JLabel();
-        Name5 = new javax.swing.JLabel();
-        Name6 = new javax.swing.JLabel();
         Price3 = new javax.swing.JLabel();
         Price4 = new javax.swing.JLabel();
-        Name3 = new javax.swing.JLabel();
-        Name4 = new javax.swing.JLabel();
+        Price5 = new javax.swing.JLabel();
+        Price6 = new javax.swing.JLabel();
         Price7 = new javax.swing.JLabel();
         Price8 = new javax.swing.JLabel();
+        Name1 = new javax.swing.JLabel();
+        Name2 = new javax.swing.JLabel();
+        Name3 = new javax.swing.JLabel();
+        Name4 = new javax.swing.JLabel();
+        Name5 = new javax.swing.JLabel();
+        Name6 = new javax.swing.JLabel();
         Name7 = new javax.swing.JLabel();
         Name8 = new javax.swing.JLabel();
+        btnPay1 = new javax.swing.JButton();
+        btnPay2 = new javax.swing.JButton();
+        btnPay3 = new javax.swing.JButton();
+        btnPay4 = new javax.swing.JButton();
+        btnCheckOut = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
         lblTotalPayable = new javax.swing.JLabel();
-        Pay1 = new javax.swing.JButton();
-        Pay2 = new javax.swing.JButton();
-        Pay3 = new javax.swing.JButton();
-        Exitbtn = new javax.swing.JButton();
-        Payable = new javax.swing.JLabel();
-        Pay4 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        lblTotalReceived = new javax.swing.JLabel();
+        lblRemainPayable = new javax.swing.JLabel();
+        PayableBox = new javax.swing.JLabel();
+        ReceivedBox = new javax.swing.JLabel();
+        RemainingPayableBox = new javax.swing.JLabel();
+        bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        No3pic.setIcon(new javax.swing.ImageIcon("D:\\Users\\ASUS\\Documents\\NetBeansProjects\\Assignment\\src\\assignment\\asset\\pic\\temp\\temp.jpg")); // NOI18N
-        getContentPane().add(No3pic, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 46, -1, -1));
-
-        No4pic.setIcon(new javax.swing.ImageIcon("D:\\Users\\ASUS\\Documents\\NetBeansProjects\\Assignment\\src\\assignment\\asset\\pic\\temp\\temp.jpg")); // NOI18N
-        getContentPane().add(No4pic, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 46, -1, -1));
 
         No1pic.setIcon(new javax.swing.ImageIcon("D:\\Users\\ASUS\\Documents\\NetBeansProjects\\Assignment\\src\\assignment\\asset\\pic\\temp\\temp.jpg")); // NOI18N
         getContentPane().add(No1pic, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 46, -1, -1));
@@ -163,19 +169,25 @@ public final class GUI extends javax.swing.JFrame {
         No2pic.setIcon(new javax.swing.ImageIcon("D:\\Users\\ASUS\\Documents\\NetBeansProjects\\Assignment\\src\\assignment\\asset\\pic\\temp\\temp.jpg")); // NOI18N
         getContentPane().add(No2pic, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 46, -1, -1));
 
-        No7pic.setIcon(new javax.swing.ImageIcon("D:\\Users\\ASUS\\Documents\\NetBeansProjects\\Assignment\\src\\assignment\\asset\\pic\\temp\\temp.jpg")); // NOI18N
-        getContentPane().add(No7pic, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 363, -1, -1));
+        No3pic.setIcon(new javax.swing.ImageIcon("D:\\Users\\ASUS\\Documents\\NetBeansProjects\\Assignment\\src\\assignment\\asset\\pic\\temp\\temp.jpg")); // NOI18N
+        getContentPane().add(No3pic, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 46, -1, -1));
+
+        No4pic.setIcon(new javax.swing.ImageIcon("D:\\Users\\ASUS\\Documents\\NetBeansProjects\\Assignment\\src\\assignment\\asset\\pic\\temp\\temp.jpg")); // NOI18N
+        getContentPane().add(No4pic, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 46, -1, -1));
 
         No5pic.setIcon(new javax.swing.ImageIcon("D:\\Users\\ASUS\\Documents\\NetBeansProjects\\Assignment\\src\\assignment\\asset\\pic\\temp\\temp.jpg")); // NOI18N
         getContentPane().add(No5pic, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 363, -1, -1));
+
+        No6pic.setIcon(new javax.swing.ImageIcon("D:\\Users\\ASUS\\Documents\\NetBeansProjects\\Assignment\\src\\assignment\\asset\\pic\\temp\\temp.jpg")); // NOI18N
+        getContentPane().add(No6pic, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 363, -1, -1));
+
+        No7pic.setIcon(new javax.swing.ImageIcon("D:\\Users\\ASUS\\Documents\\NetBeansProjects\\Assignment\\src\\assignment\\asset\\pic\\temp\\temp.jpg")); // NOI18N
+        getContentPane().add(No7pic, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 363, -1, -1));
 
         No8pic.setBackground(new java.awt.Color(255, 255, 255));
         No8pic.setForeground(new java.awt.Color(255, 255, 255));
         No8pic.setIcon(new javax.swing.ImageIcon("D:\\Users\\ASUS\\Documents\\NetBeansProjects\\Assignment\\src\\assignment\\asset\\pic\\temp\\temp.jpg")); // NOI18N
         getContentPane().add(No8pic, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 363, -1, -1));
-
-        No6pic.setIcon(new javax.swing.ImageIcon("D:\\Users\\ASUS\\Documents\\NetBeansProjects\\Assignment\\src\\assignment\\asset\\pic\\temp\\temp.jpg")); // NOI18N
-        getContentPane().add(No6pic, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 363, -1, -1));
 
         Buy1.setText("Buy");
         Buy1.addActionListener(new java.awt.event.ActionListener() {
@@ -242,10 +254,28 @@ public final class GUI extends javax.swing.JFrame {
         getContentPane().add(Buy8, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 639, 120, -1));
 
         Price1.setText("Price");
-        getContentPane().add(Price1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 277, 120, -1));
+        getContentPane().add(Price1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 120, -1));
 
         Price2.setText("Price");
-        getContentPane().add(Price2, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 277, 120, -1));
+        getContentPane().add(Price2, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 280, 120, -1));
+
+        Price3.setText("Price");
+        getContentPane().add(Price3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 120, -1));
+
+        Price4.setText("Price");
+        getContentPane().add(Price4, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 280, 120, -1));
+
+        Price5.setText("Price");
+        getContentPane().add(Price5, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 600, 120, -1));
+
+        Price6.setText("Price");
+        getContentPane().add(Price6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 600, 120, -1));
+
+        Price7.setText("Price");
+        getContentPane().add(Price7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 600, 120, -1));
+
+        Price8.setText("Price");
+        getContentPane().add(Price8, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 600, 120, -1));
 
         Name1.setText("Name");
         getContentPane().add(Name1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 297, 120, -1));
@@ -253,11 +283,11 @@ public final class GUI extends javax.swing.JFrame {
         Name2.setText("Name");
         getContentPane().add(Name2, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 297, 120, -1));
 
-        Price5.setText("Price");
-        getContentPane().add(Price5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 594, 120, -1));
+        Name3.setText("Name");
+        getContentPane().add(Name3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 297, 120, -1));
 
-        Price6.setText("Price");
-        getContentPane().add(Price6, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 594, 120, -1));
+        Name4.setText("Name");
+        getContentPane().add(Name4, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 297, 120, -1));
 
         Name5.setText("Name");
         getContentPane().add(Name5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 614, 120, -1));
@@ -265,67 +295,121 @@ public final class GUI extends javax.swing.JFrame {
         Name6.setText("Name");
         getContentPane().add(Name6, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 614, 120, -1));
 
-        Price3.setText("Price");
-        getContentPane().add(Price3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 277, 120, -1));
-
-        Price4.setText("Price");
-        getContentPane().add(Price4, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 277, 120, -1));
-
-        Name3.setText("Name");
-        getContentPane().add(Name3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 297, 120, -1));
-
-        Name4.setText("Name");
-        getContentPane().add(Name4, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 297, 120, -1));
-
-        Price7.setText("Price");
-        getContentPane().add(Price7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 594, 120, -1));
-
-        Price8.setText("Price");
-        getContentPane().add(Price8, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 594, 120, -1));
-
         Name7.setText("Name");
         getContentPane().add(Name7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 614, 120, -1));
 
         Name8.setText("Name");
         getContentPane().add(Name8, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 614, 120, -1));
 
-        lblTotalPayable.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lblTotalPayable.setText("Total Payable :");
-        getContentPane().add(lblTotalPayable, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 110, 160, 70));
-
-        Pay1.setText("50 SEN");
-        getContentPane().add(Pay1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 220, 100, 50));
-
-        Pay2.setText("RM 1");
-        getContentPane().add(Pay2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 280, 100, 50));
-
-        Pay3.setText("RM 5");
-        getContentPane().add(Pay3, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 220, 100, 50));
-
-        Exitbtn.setText("Exit");
-        Exitbtn.addActionListener(new java.awt.event.ActionListener() {
+        btnPay1.setText("50 SEN");
+        btnPay1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExitbtnActionPerformed(evt);
+                btnPay1ActionPerformed(evt);
             }
         });
-        getContentPane().add(Exitbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 20, 100, 50));
+        getContentPane().add(btnPay1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 350, 100, 50));
 
-        Payable.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        getContentPane().add(Payable, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 110, 160, 70));
+        btnPay2.setText("RM 1");
+        btnPay2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPay2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnPay2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 410, 100, 50));
 
-        Pay4.setText("RM 10");
-        getContentPane().add(Pay4, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 280, 100, 50));
+        btnPay3.setText("RM 5");
+        btnPay3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPay3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnPay3, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 350, 100, 50));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assignment/asset/pic/temp/bg.jpg"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1130, 670));
+        btnPay4.setText("RM 10");
+        btnPay4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPay4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnPay4, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 410, 100, 50));
+
+        btnCheckOut.setText("Check out");
+        btnCheckOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCheckOutActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnCheckOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 470, 210, 50));
+
+        btnExit.setText("Exit");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 20, 100, 50));
+
+        lblTotalPayable.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblTotalPayable.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblTotalPayable.setText("Total Payable :");
+        getContentPane().add(lblTotalPayable, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 110, 220, 70));
+
+        lblTotalReceived.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblTotalReceived.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblTotalReceived.setText("Total Received :");
+        getContentPane().add(lblTotalReceived, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 170, 220, 70));
+
+        lblRemainPayable.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblRemainPayable.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblRemainPayable.setText("Remaining Payable :");
+        getContentPane().add(lblRemainPayable, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 230, 220, 70));
+
+        PayableBox.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        PayableBox.setText("|");
+        getContentPane().add(PayableBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 110, 160, 70));
+
+        ReceivedBox.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        ReceivedBox.setText("|");
+        getContentPane().add(ReceivedBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 170, 160, 70));
+
+        RemainingPayableBox.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        RemainingPayableBox.setText("|");
+        getContentPane().add(RemainingPayableBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 230, 160, 70));
+
+        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assignment/asset/pic/temp/bg.jpg"))); // NOI18N
+        bg.setText("jLabel2");
+        getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1180, 670));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ExitbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitbtnActionPerformed
+    private void btnCheckOutActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnCheckOutActionPerformed
+
+    }// GEN-LAST:event_btnCheckOutActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ExitbtnActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_ExitbtnActionPerformed
+    }// GEN-LAST:event_ExitbtnActionPerformed
+
+    private void btnPay1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_Pay1ActionPerformed
+        Double amount = 0.5;
+        updateTotalReceived(amount);
+    }
+
+    private void btnPay2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_Pay2ActionPerformed
+        Double amount = 1.00;
+        updateTotalReceived(amount);
+    }
+
+    private void btnPay3ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_Pay3ActionPerformed
+        Double amount = 5.00;
+        updateTotalReceived(amount);
+    }
+
+    private void btnPay4ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_Pay4ActionPerformed
+        Double amount = 10.00;
+        updateTotalReceived(amount);
+    }
 
     private void Buy1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_Buy1ActionPerformed
         int id = 1;
@@ -376,20 +460,68 @@ public final class GUI extends javax.swing.JFrame {
     }
 
     public void updateTotalPayable(String addedPrice, int id) {
-        String current = Payable.getText();
-        if ("".equals(current)) {
-            System.out.println("add : " + addedPrice);
+        String current = PayableBox.getText();
+        if ("".equals(current) || "|".equals(current)) {
             double s = Double.valueOf(addedPrice);
-            Payable.setText(String.valueOf(s));
+            PayableBox.setText(String.valueOf(s));
         } else {
             double current1 = Double.parseDouble(current);
             double add = Double.parseDouble(addedPrice);
             current1 += add;
             current1 = Math.round(current1);
-            Payable.setText(String.valueOf(current1));
+            PayableBox.setText(String.valueOf(current1));
         }
+        updateTotalRemaining();
     }
 
+    public void updateTotalReceived(Double addedPrice) {
+        String current = ReceivedBox.getText();
+        ReceivedBox.setText(String.valueOf(addedPrice));
+        if ("".equals(current) || "|".equals(current)) {
+            double s = addedPrice;
+            ReceivedBox.setText(String.valueOf(s));
+        } else {
+            double current1 = Double.parseDouble(current);
+            double add = addedPrice;
+            current1 += add;
+            current1 = Math.round(current1);
+            ReceivedBox.setText(String.valueOf(current1));
+        }
+        updateTotalRemaining();
+
+    }
+
+    public void updateTotalRemaining() {
+        String payable = PayableBox.getText();
+        String received = ReceivedBox.getText();
+        System.out.println(payable);
+        System.out.println(received);
+        if (!("|".equals(payable) || "|".equals(received))) {
+            //If it equal to |
+            Double payable1 = Double.valueOf(payable);
+            Double received1 = Double.valueOf(received);
+            Double remaining = payable1 - received1;
+            if (remaining < 0) {
+                //Remaining is less then 0 
+                //Blocking ppl to use 
+                GUI_Class.showMessageBox("You are giving out too much money!");
+                resetCounter();
+            }else if (remaining > 0){
+                //Remaining is more than 0
+                //Ask ppl to pay 
+                GUI_Class.showMessageBox("remaining is more then 0");
+            }else {
+                //Remaining is equal to 0 
+                //Set Check out 
+                GUI_Class.sayThanks();
+            }
+        }
+    }
+    public void resetCounter(){
+        PayableBox.setText("|");
+        ReceivedBox.setText("|");
+        RemainingPayableBox.setText("|");
+    }
     /**
      * @param args the command line arguments
      */
@@ -435,7 +567,6 @@ public final class GUI extends javax.swing.JFrame {
     private javax.swing.JButton Buy6;
     private javax.swing.JButton Buy7;
     private javax.swing.JButton Buy8;
-    private javax.swing.JButton Exitbtn;
     private javax.swing.JLabel Name1;
     private javax.swing.JLabel Name2;
     private javax.swing.JLabel Name3;
@@ -452,11 +583,7 @@ public final class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel No6pic;
     private javax.swing.JLabel No7pic;
     private javax.swing.JLabel No8pic;
-    private javax.swing.JButton Pay1;
-    private javax.swing.JButton Pay2;
-    private javax.swing.JButton Pay3;
-    private javax.swing.JButton Pay4;
-    private javax.swing.JLabel Payable;
+    private javax.swing.JLabel PayableBox;
     private javax.swing.JLabel Price1;
     private javax.swing.JLabel Price2;
     private javax.swing.JLabel Price3;
@@ -465,7 +592,17 @@ public final class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel Price6;
     private javax.swing.JLabel Price7;
     private javax.swing.JLabel Price8;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel ReceivedBox;
+    private javax.swing.JLabel RemainingPayableBox;
+    private javax.swing.JLabel bg;
+    private javax.swing.JButton btnCheckOut;
+    private javax.swing.JButton btnExit;
+    private javax.swing.JButton btnPay1;
+    private javax.swing.JButton btnPay2;
+    private javax.swing.JButton btnPay3;
+    private javax.swing.JButton btnPay4;
+    private javax.swing.JLabel lblRemainPayable;
     private javax.swing.JLabel lblTotalPayable;
+    private javax.swing.JLabel lblTotalReceived;
     // End of variables declaration//GEN-END:variables
 }
