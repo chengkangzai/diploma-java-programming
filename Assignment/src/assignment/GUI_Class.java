@@ -34,5 +34,11 @@ public class GUI_Class {
         JOptionPane.showMessageDialog(parent, message, "Pop Up", 0);
         parent.setVisible(false);
     }
+    public static void sayThanks() {
+        final JFrame parent = new JFrame();
+        parent.setVisible(true);
+        JOptionPane.showMessageDialog(parent, "Thanks for purchase!", "Pop Up", 0);
+        parent.setVisible(false);
+    }
 
 }
