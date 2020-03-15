@@ -164,6 +164,7 @@ public final class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -201,8 +202,6 @@ public final class GUI extends javax.swing.JFrame {
         Name8 = new javax.swing.JLabel();
         btnPay1 = new javax.swing.JButton();
         btnPay2 = new javax.swing.JButton();
-        btnPay3 = new javax.swing.JButton();
-        btnPay4 = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
         lblTotalPayable = new javax.swing.JLabel();
         lblTotalReceived = new javax.swing.JLabel();
@@ -379,22 +378,6 @@ public final class GUI extends javax.swing.JFrame {
         });
         getContentPane().add(btnPay2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 410, 100, 50));
 
-        btnPay3.setText("RM 5");
-        btnPay3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPay3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnPay3, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 350, 100, 50));
-
-        btnPay4.setText("RM 10");
-        btnPay4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPay4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnPay4, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 410, 100, 50));
-
         btnExit.setText("Exit");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -449,16 +432,6 @@ public final class GUI extends javax.swing.JFrame {
 
     private void btnPay2ActionPerformed(java.awt.event.ActionEvent evt) {
         Double amount = 1.00;
-        updateTotalReceived(amount);
-    }
-
-    private void btnPay3ActionPerformed(java.awt.event.ActionEvent evt) {
-        Double amount = 5.00;
-        updateTotalReceived(amount);
-    }
-
-    private void btnPay4ActionPerformed(java.awt.event.ActionEvent evt) {
-        Double amount = 10.00;
         updateTotalReceived(amount);
     }
 
@@ -669,8 +642,6 @@ public final class GUI extends javax.swing.JFrame {
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnPay1;
     private javax.swing.JButton btnPay2;
-    private javax.swing.JButton btnPay3;
-    private javax.swing.JButton btnPay4;
     private javax.swing.JLabel lblRemainPayable;
     private javax.swing.JLabel lblTotalPayable;
     private javax.swing.JLabel lblTotalReceived;
