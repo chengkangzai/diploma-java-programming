@@ -10,6 +10,10 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 import assignment.GUI_Class;
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /**
  *
@@ -23,52 +27,107 @@ public final class GUI extends javax.swing.JFrame {
      */
     private static final long serialVersionUID = 1L;
 
+    public void refresh() {
+
+        initializeImageIcon();
+        initializeName();
+        initializePrice();
+    }
+
+    ArrayList<JLabel> StockPicAL = new ArrayList<JLabel>();
+
+    public void initializePicToArrayList() {
+        StockPicAL.add(No1pic);
+        StockPicAL.add(No2pic);
+        StockPicAL.add(No3pic);
+        StockPicAL.add(No4pic);
+        StockPicAL.add(No5pic);
+        StockPicAL.add(No6pic);
+        StockPicAL.add(No7pic);
+        StockPicAL.add(No8pic);
+    }
+
     public void initializeImageIcon() {
         ArrayList<String> picUrl = DB.returnAllPicUrl();
         if (!(picUrl.size() <= 7)) {
-            No1pic.setIcon(new ImageIcon((String) picUrl.get(0)));
-            No2pic.setIcon(new ImageIcon((String) picUrl.get(1)));
-            No3pic.setIcon(new ImageIcon((String) picUrl.get(2)));
-            No4pic.setIcon(new ImageIcon((String) picUrl.get(3)));
-            No5pic.setIcon(new ImageIcon((String) picUrl.get(4)));
-            No6pic.setIcon(new ImageIcon((String) picUrl.get(5)));
-            No7pic.setIcon(new ImageIcon((String) picUrl.get(6)));
-            No8pic.setIcon(new ImageIcon((String) picUrl.get(7)));
-
+            for (int i = 0; i < StockPicAL.size(); i++) {
+                StockPicAL.get(i).setIcon(new ImageIcon((String) picUrl.get(i)));
+            }
         } else {
             GUI_Class.showMessageBox("Not enough record in Database");
         }
+    }
+
+    ArrayList<JLabel> stockNameAL = new ArrayList<JLabel>();
+
+    public void initializeStockNameToArrayList() {
+        stockNameAL.add(Name1);
+        stockNameAL.add(Name2);
+        stockNameAL.add(Name3);
+        stockNameAL.add(Name4);
+        stockNameAL.add(Name5);
+        stockNameAL.add(Name6);
+        stockNameAL.add(Name7);
+        stockNameAL.add(Name8);
     }
 
     public void initializeName() {
         ArrayList<String> stockName = DB.returnAllStockName();
         if (!(stockName.size() <= 7)) {
-            Name1.setText(stockName.get(0));
-            Name2.setText(stockName.get(1));
-            Name3.setText(stockName.get(2));
-            Name4.setText(stockName.get(3));
-            Name5.setText(stockName.get(4));
-            Name6.setText(stockName.get(5));
-            Name7.setText(stockName.get(6));
-            Name8.setText(stockName.get(7));
+            for (int i = 0; i < stockNameAL.size(); i++) {
+                stockNameAL.get(i).setText(stockName.get(i));
+            }
         } else {
             GUI_Class.showMessageBox("Not enough record in Database");
         }
     }
 
+    ArrayList<JLabel> priceAL = new ArrayList<JLabel>();
+
+    public void initializeStockPriceToArrayList() {
+        priceAL.add(Price1);
+        priceAL.add(Price2);
+        priceAL.add(Price3);
+        priceAL.add(Price4);
+        priceAL.add(Price5);
+        priceAL.add(Price6);
+        priceAL.add(Price7);
+        priceAL.add(Price8);
+    }
+
     public void initializePrice() {
         ArrayList<String> price = DB.returnAllStockPrice();
         if (!(price.size() <= 7)) {
-            Price1.setText(price.get(0));
-            Price2.setText(price.get(1));
-            Price3.setText(price.get(2));
-            Price4.setText(price.get(3));
-            Price5.setText(price.get(4));
-            Price6.setText(price.get(5));
-            Price7.setText(price.get(6));
-            Price8.setText(price.get(7));
+            for (int i = 0; i < priceAL.size(); i++) {
+                priceAL.get(i).setText(price.get(i));
+            }
         } else {
             GUI_Class.showMessageBox("Not enough record in Database");
+        }
+    }
+
+    ArrayList<JButton> purchaseBtnAL = new ArrayList<>();
+
+    public void initializeButtonToArrayList() {
+        purchaseBtnAL.add(Buy1);
+        purchaseBtnAL.add(Buy2);
+        purchaseBtnAL.add(Buy3);
+        purchaseBtnAL.add(Buy4);
+        purchaseBtnAL.add(Buy5);
+        purchaseBtnAL.add(Buy6);
+        purchaseBtnAL.add(Buy7);
+        purchaseBtnAL.add(Buy8);
+    }
+
+    public void disableAllButton() {
+        for (int i = 0; i < purchaseBtnAL.size(); i++) {
+            purchaseBtnAL.get(i).setEnabled(false);
+        }
+    }
+
+    public void enableAllButton() {
+        for (int i = 0; i < purchaseBtnAL.size(); i++) {
+            purchaseBtnAL.get(i).setEnabled(true);
         }
     }
 
@@ -77,10 +136,11 @@ public final class GUI extends javax.swing.JFrame {
      */
     public GUI() {
         initComponents();
-        initializeImageIcon();
-        initializeName();
-        initializePrice();
-
+        initializeButtonToArrayList();
+        initializePicToArrayList();
+        initializeStockNameToArrayList();
+        initializeStockPriceToArrayList();
+        refresh();
     }
 
     /**
@@ -378,77 +438,73 @@ public final class GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCheckOutActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnCheckOutActionPerformed
-
-    }// GEN-LAST:event_btnCheckOutActionPerformed
-
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ExitbtnActionPerformed
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {
         System.exit(0);
-    }// GEN-LAST:event_ExitbtnActionPerformed
+    }
 
-    private void btnPay1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_Pay1ActionPerformed
+    private void btnPay1ActionPerformed(java.awt.event.ActionEvent evt) {
         Double amount = 0.5;
         updateTotalReceived(amount);
     }
 
-    private void btnPay2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_Pay2ActionPerformed
+    private void btnPay2ActionPerformed(java.awt.event.ActionEvent evt) {
         Double amount = 1.00;
         updateTotalReceived(amount);
     }
 
-    private void btnPay3ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_Pay3ActionPerformed
+    private void btnPay3ActionPerformed(java.awt.event.ActionEvent evt) {
         Double amount = 5.00;
         updateTotalReceived(amount);
     }
 
-    private void btnPay4ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_Pay4ActionPerformed
+    private void btnPay4ActionPerformed(java.awt.event.ActionEvent evt) {
         Double amount = 10.00;
         updateTotalReceived(amount);
     }
 
-    private void Buy1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_Buy1ActionPerformed
+    private void Buy1ActionPerformed(java.awt.event.ActionEvent evt) {
         int id = 1;
         String price = DB.getStockPriceByID(String.valueOf(id));
         updateTotalPayable(price, id);
     }
 
-    private void Buy2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_Buy2ActionPerformed
+    private void Buy2ActionPerformed(java.awt.event.ActionEvent evt) {
         int id = 2;
         String price = DB.getStockPriceByID(String.valueOf(id));
         updateTotalPayable(price, id);
     }
 
-    private void Buy3ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_Buy3ActionPerformed
+    private void Buy3ActionPerformed(java.awt.event.ActionEvent evt) {
         int id = 3;
         String price = DB.getStockPriceByID(String.valueOf(id));
         updateTotalPayable(price, id);
     }
 
-    private void Buy4ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_Buy4ActionPerformed
+    private void Buy4ActionPerformed(java.awt.event.ActionEvent evt) {
         int id = 4;
         String price = DB.getStockPriceByID(String.valueOf(id));
         updateTotalPayable(price, id);
     }
 
-    private void Buy5ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_Buy5ActionPerformed
+    private void Buy5ActionPerformed(java.awt.event.ActionEvent evt) {
         int id = 5;
         String price = DB.getStockPriceByID(String.valueOf(id));
         updateTotalPayable(price, id);
     }
 
-    private void Buy6ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_Buy6ActionPerformed
+    private void Buy6ActionPerformed(java.awt.event.ActionEvent evt) {
         int id = 6;
         String price = DB.getStockPriceByID(String.valueOf(id));
         updateTotalPayable(price, id);
     }
 
-    private void Buy7ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_Buy7ActionPerformed
+    private void Buy7ActionPerformed(java.awt.event.ActionEvent evt) {
         int id = 7;
         String price = DB.getStockPriceByID(String.valueOf(id));
         updateTotalPayable(price, id);
     }
 
-    private void Buy8ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_Buy8ActionPerformed
+    private void Buy8ActionPerformed(java.awt.event.ActionEvent evt) {
         int id = 8;
         String price = DB.getStockPriceByID(String.valueOf(id));
         updateTotalPayable(price, id);
@@ -500,14 +556,15 @@ public final class GUI extends javax.swing.JFrame {
     }
 
     public void updateTotalRemaining() {
+        disableAllButton();
         String payable = PayableBox.getText();
         String received = ReceivedBox.getText();
+
         if (!("|".equals(payable) || "|".equals(received))) {
-            // If it equal to |
+            // If it equal to | or is empty
             Double payable1 = Double.valueOf(payable);
             Double received1 = Double.valueOf(received);
             Double remaining = payable1 - received1;
-            System.out.println(remaining);
             if (remaining < 0) {
                 // Remaining is less then 0
                 // Blocking ppl to use
@@ -522,8 +579,10 @@ public final class GUI extends javax.swing.JFrame {
             } else {
                 // Remaining is equal to 0
                 // Set Check out
+                refresh();
                 GUI_Class.sayThanks();
                 resetCounter();
+                enableAllButton();
             }
         }
     }
