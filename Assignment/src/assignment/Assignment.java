@@ -11,15 +11,20 @@ public class Assignment {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //DB.testing();
 
         GUI gui = new GUI();
         gui.setVisible(true);
-        //1. Define UI Class --> GUI
-        //2. Calculation Logic with proper method --> Stock 
-        //3. Text Editing(db) w method --> DB
-        //4. Admin Page --> GUI 
-        //5. Stock Management --> Stock
+        
+        //System.out.println("Please enter an id");
+        //Scanner read = new Scanner(System.in);
+        //String id =read.nextLine();
+        //DB.reduceStock(id);
+
+        // 1. Define UI Class --> GUI
+        // 2. Calculation Logic with proper method --> Stock
+        // 3. Text Editing(db) w method --> DB
+        // 4. Admin Page --> GUI
+        // 5. Stock Management --> Stock
     }
 
 }

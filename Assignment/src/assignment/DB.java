@@ -1,12 +1,10 @@
 package assignment;
 
 import java.io.IOException;
-import static java.lang.Math.PI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,20 +12,13 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.sound.sampled.SourceDataLine;
-
 public class DB {
 
-    public static final void testing() {
-        System.out.printf("Value with 3 digits after decimal point %.3f %n", PI);
-        DecimalFormat df = new DecimalFormat("###.###");
-        System.out.println(df.format(PI));
-    }
 
     public static final String FILENAME = "stock.csv";
     final static Path dbPath = Paths.get(FILENAME);
 
-    private static String[] returnAll() {
+    public static String[] returnAll() {
         List<String> data = null;
         try {
             data = Files.readAllLines(dbPath);
@@ -41,7 +32,7 @@ public class DB {
         return container;
     }
 
-    private static Object[] returnHeader() {
+    public static Object[] returnSplitedHeader() {
         String[] data = returnAll();
         List<String> head = null;
         for (int i = 0; i < 1; i++) {
@@ -87,9 +78,19 @@ public class DB {
                 e += ".00";
             }
             stockPrice.add(e);
-
         }
         return stockPrice;
+    }
+
+    public static ArrayList<String> returnAllStock() {
+        @SuppressWarnings("unchecked")
+        ArrayList<String> stock = new ArrayList<String>();
+        for (int i = 1; i < DB.returnAll().length; i++) {
+            String id = String.valueOf(i);
+            String e = getStockByID(id);
+            stock.add(e);
+        }
+        return stock;
     }
 
     public static void echoAll() {
@@ -98,7 +99,7 @@ public class DB {
 
     public static void echoSplited() {
         String[] data = returnAll();
-        Object[] header = returnHeader();
+        Object[] header = returnSplitedHeader();
         int x = 0;
         for (int i = 1; i < data.length; i++) {
             // Spilit the data by ,
@@ -122,7 +123,7 @@ public class DB {
         // No Negative number for price, stock
         // NO word beside T/F for Avail
         Scanner read = new Scanner(System.in);
-        Object[] header = returnHeader();
+        Object[] header = returnSplitedHeader();
         String addLine = returnAll().length + ",";
         for (int i = 1; i < header.length - 1; i++) {
             System.out.println("Please enter value of " + header[i]);
@@ -249,13 +250,41 @@ public class DB {
         return img;
     }
 
-    public static void modifyLine(int id, String name, int stock, double price) {
-        // replace the line
+    public static void reduceStock(String id) {
+        String[] data = returnAll();
+        int idd = Integer.valueOf(id);
+        String line = data[idd];
+        String[] splited = line.split("\\,");
+        String stock = splited[3];
+        int newStock = (Integer.valueOf(stock) - 1);
 
+        data[idd] = splited[0] + "," + splited[1] + "," + splited[2] + "," + String.valueOf(newStock) + "," + splited[4]
+                + "," + splited[5];
+
+        String info = data[0] + "\n";
+        for (int i = 1; i < data.length; i++) {
+            info += data[i] + "\n";
+        }
+
+        int status = deleteAndWriteAgain(info);
+        if (status == 0) {
+            System.out.println("Modifies success ");
+        }
+        // Read All line
+        // If ID match, find the stock
+        // Reduce one
+        // Delete and write again
     }
 
-    public static void reduceStock(int id, int amout) {
-
+    public static int deleteAndWriteAgain(String data) {
+        int status= 0;
+        try {
+            Files.write(dbPath, data.getBytes(), StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.CREATE);
+        } catch (IOException ex) {
+            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return status;
     }
 
     // DB Stucter

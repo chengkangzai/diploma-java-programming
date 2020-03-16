@@ -34,6 +34,7 @@ public class GUI_Class {
         JOptionPane.showMessageDialog(parent, message, "Pop Up", 0);
         parent.setVisible(false);
     }
+
     public static void sayThanks() {
         final JFrame parent = new JFrame();
         parent.setVisible(true);
@@ -41,4 +42,23 @@ public class GUI_Class {
         parent.setVisible(false);
     }
 
+    public static void exitSoftware() {
+        final JFrame parent = new JFrame();
+        final int showConfirmDialog = JOptionPane.showConfirmDialog(parent, "Are you sure you want to exit");
+        switch (showConfirmDialog) {
+            case 0:
+                System.exit(0);
+                break;
+
+            case 1:
+                parent.setVisible(false);
+                break;
+
+            case 2:
+                parent.setVisible(false);
+                break;
+
+        }
+
+    }
 }
