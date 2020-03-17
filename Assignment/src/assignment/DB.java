@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,9 +15,11 @@ import java.util.logging.Logger;
 
 public class DB {
 
+    public static final String DBFileName = "stock.csv";
+    final static Path dbPath = Paths.get(DBFileName);
 
-    public static final String FILENAME = "stock.csv";
-    final static Path dbPath = Paths.get(FILENAME);
+    public static final String LoggerFileName = "log.txt";
+    final static Path loggerPath = Paths.get(LoggerFileName);
 
     public static String[] returnAll() {
         List<String> data = null;
@@ -269,21 +272,71 @@ public class DB {
         int status = deleteAndWriteAgain(info);
         if (status == 0) {
             System.out.println("Modifies success ");
+        } else {
+            System.out.println("Modifies Error");
         }
-        // Read All line
-        // If ID match, find the stock
-        // Reduce one
-        // Delete and write again
     }
 
     public static int deleteAndWriteAgain(String data) {
-        int status= 0;
+        int status = 0;
         try {
             Files.write(dbPath, data.getBytes(), StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.CREATE);
         } catch (IOException ex) {
             Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            status = 1;
         }
-        
+
+        return status;
+    }
+
+    public static int Logger(int type, int id) {
+        int status = 0;
+        String head;
+        String body;
+        final String time = LocalDateTime.now().toString();
+        switch (type) {
+            case 0:
+                head = "[PURCHASE]\t - " + "[" + time + "] - ";
+                body = "A Purchase of " + getStockNameByID(String.valueOf(id)) + " was made" + ". Current Stock is "
+                        + getStockByID(String.valueOf(id));
+                break;
+            case 1:
+                head = "[UPDATE]\t - " + "[" + time + "] - ";
+                body = getStockNameByID(String.valueOf(id)) + " was restock " + ". Current Stock is "
+                        + getStockByID(String.valueOf(id));
+                break;
+            case 2:
+                String adminPLStatus = null;
+                if (id == 0) {
+                    adminPLStatus = "open";
+                } else if (id == 1) {
+                    adminPLStatus = "close";
+                }
+                head = "[WARNING]\t - " + "[" + time + "] - ";
+                body = "Admin Panel was " + adminPLStatus;
+                break;
+            case 3:
+                String softwareStatus = null;
+                if (id == 0) {
+                    softwareStatus = "initialized";
+                } else if (id == 1) {
+                    softwareStatus = "close";
+                }
+                head = "[INFO]\t\t - " + "[" + time + "] - ";
+                body = "The Software was " + softwareStatus;
+                break;
+            default:
+                head = "[ERROR]\t\t - " + "[" + time + "] - ";
+                body = "An Error is created in " + time + " While processing with stock id :" + id;
+                break;
+        }
+
+        String line = head + body + "\n";
+        try {
+            Files.write(loggerPath, line.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+        } catch (IOException ex) {
+            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return status;
     }
 

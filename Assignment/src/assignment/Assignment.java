@@ -11,6 +11,7 @@ public class Assignment {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        DB.Logger(3, 0);
 
         GUI gui = new GUI();
         gui.setVisible(true);

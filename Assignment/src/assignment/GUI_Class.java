@@ -31,14 +31,14 @@ public class GUI_Class {
     public static void showMessageBox(String message) {
         final JFrame parent = new JFrame();
         parent.setVisible(true);
-        JOptionPane.showMessageDialog(parent, message, "Pop Up", 0);
+        JOptionPane.showMessageDialog(parent, message, "Pop Up 1", 1);
         parent.setVisible(false);
     }
 
     public static void sayThanks() {
         final JFrame parent = new JFrame();
         parent.setVisible(true);
-        JOptionPane.showMessageDialog(parent, "Thanks for purchase!", "Pop Up", 0);
+        JOptionPane.showMessageDialog(parent, "Thanks for purchase!", "Thanks and please come again", 1);
         parent.setVisible(false);
     }
 
@@ -47,6 +47,7 @@ public class GUI_Class {
         final int showConfirmDialog = JOptionPane.showConfirmDialog(parent, "Are you sure you want to exit");
         switch (showConfirmDialog) {
             case 0:
+                DB.Logger(3, 1);
                 System.exit(0);
                 break;
 

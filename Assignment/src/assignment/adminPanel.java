@@ -18,6 +18,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
+import javafx.beans.binding.IntegerExpression;
 
 /**
  *
@@ -58,7 +59,8 @@ public class adminPanel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -74,20 +76,13 @@ public class adminPanel extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        StockTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        StockTable.setModel(new javax.swing.table.DefaultTableModel(new Object[][] {
 
-            },
-            new String [] {
-                "ID", "Name", "Price", "Stock", "AVAILABILITY(T/F)", "Img Path"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, true
-            };
+        }, new String[] { "ID", "Name", "Price", "Stock", "AVAILABILITY(T/F)", "Img Path" }) {
+            boolean[] canEdit = new boolean[] { false, true, true, true, true, true };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         jScrollPane1.setViewportView(StockTable);
@@ -125,7 +120,15 @@ public class adminPanel extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {                                          
+    private void loggingStock() {
+        for (int i = 0; i < model.getRowCount(); i++) {
+            String data = model.getValueAt(i, 0).toString();
+            DB.Logger(1, Integer.valueOf(data));
+        }
+    }
+
+    private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {
+        DB.Logger(2, 1);
         dispose();
         GUI gui = new GUI();
         gui.setVisible(true);
@@ -140,45 +143,21 @@ public class adminPanel extends javax.swing.JFrame {
                 numData.add(model.getValueAt(0, j).toString());
                 data += model.getValueAt(i, j).toString() + ",";
                 if (j == 4) {
-                    data += model.getValueAt(i, 5).toString()+"\n";
+                    data += model.getValueAt(i, 5).toString() + "\n";
                 }
             }
         }
         int status = DB.deleteAndWriteAgain(data);
-        if (status == 0 ) {
+        if (status == 0) {
+            loggingStock();
             GUI_Class.showMessageBox("success!");
+        } else {
+            GUI_Class.showMessageBox("Something Wrong is happening ");
         }
     }
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnExitActionPerformed
         GUI_Class.exitSoftware();
-    }
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//
-        JFrame f = new JFrame("Table Example");
-        String data[][] = { { "101", "Amit", "670000" }, { "102", "Jai", "780000" }, { "101", "Sachin", "700000" } };
-        String column[] = { "ID", "NAME", "SALARY" };
-        final JTable jt = new JTable(data, column);
-        jt.setCellSelectionEnabled(true);
-        ListSelectionModel select = jt.getSelectionModel();
-        select.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        select.addListSelectionListener(new ListSelectionListener() {
-            public void valueChanged(ListSelectionEvent e) {
-                String Data = null;
-                int[] row = jt.getSelectedRows();
-                int[] columns = jt.getSelectedColumns();
-                for (int i = 0; i < row.length; i++) {
-                    for (int j = 0; j < columns.length; j++) {
-                        Data = (String) jt.getValueAt(row[i], columns[j]);
-                    }
-                }
-                System.out.println("Table element selected is: " + Data);
-            }
-        });
-        JScrollPane sp = new JScrollPane(jt);
-        f.add(sp);
-        f.setSize(300, 200);
-        f.setVisible(true);
     }
 
     /**

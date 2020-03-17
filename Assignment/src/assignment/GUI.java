@@ -35,7 +35,7 @@ public final class GUI extends javax.swing.JFrame {
 
     }
 
-    ArrayList<JLabel> stockPicAL = new ArrayList<JLabel>();
+    ArrayList<JLabel> stockPicAL = new ArrayList<>();
 
     public void initializePicToArrayList() {
         stockPicAL.add(No1pic);
@@ -69,7 +69,7 @@ public final class GUI extends javax.swing.JFrame {
         }
     }
 
-    ArrayList<JLabel> stockNameAL = new ArrayList<JLabel>();
+    ArrayList<JLabel> stockNameAL = new ArrayList<>();
 
     public void initializeStockNameToArrayList() {
         stockNameAL.add(Name1);
@@ -93,7 +93,7 @@ public final class GUI extends javax.swing.JFrame {
         }
     }
 
-    ArrayList<JLabel> priceAL = new ArrayList<JLabel>();
+    ArrayList<JLabel> priceAL = new ArrayList<>();
 
     public void initializeStockPriceToArrayList() {
         priceAL.add(Price1);
@@ -479,6 +479,7 @@ public final class GUI extends javax.swing.JFrame {
 
         if ("password".equals(String.valueOf(password))) {
             adminPanel adminPL = new adminPanel();
+            DB.Logger(2, 0);
             adminPL.setVisible(true);
             dispose();
         }
@@ -624,10 +625,13 @@ public final class GUI extends javax.swing.JFrame {
                 // Remaining is equal to 0
                 // Set Check out
                 DB.reduceStock(String.valueOf(selectedID));
-                refresh();
+                DB.Logger(0, selectedID);
                 GUI_Class.sayThanks();
                 resetCounter();
                 enableAllBuyBtn();
+                dispose();
+                GUI gui = new GUI();
+                gui.setVisible(true);
             }
         }
     }
