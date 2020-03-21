@@ -1,7 +1,10 @@
 package assignment;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 
 public class GUI_Class {
 
@@ -61,5 +64,42 @@ public class GUI_Class {
 
         }
 
+    }
+
+    public static char[] showPasswordBox() {
+        JPanel panel = new JPanel();
+        JLabel label = new JLabel("Enter a password:");
+        JPasswordField pass = new JPasswordField(10);
+        panel.add(label);
+        panel.add(pass);
+        String[] options = new String[] { "OK", "Cancel" };
+        int option = JOptionPane.showOptionDialog(null, panel, "Password", JOptionPane.NO_OPTION,
+                JOptionPane.PLAIN_MESSAGE, null, options, options[1]);
+
+        char[] password = pass.getPassword();
+        return password;
+    }
+
+    public static int passwordMatching(String password) {
+        String oriPassword =DB.returnPassword();
+        String hashInput = DB.getHash(password.getBytes(), "SHA-256");
+        int status = 0;
+        if (oriPassword.equals(hashInput)) {
+            status =1;
+        }
+        return status;
+    }
+
+    public static void showGUI() {
+        DB.Logger(2, 1);
+        GUI gui = new GUI();
+        gui.setVisible(true);
+        
+    }
+
+    public static void showAdminPanel() {
+        DB.Logger(2, 0);
+        adminPanel adminPL = new adminPanel();
+        adminPL.setVisible(true);
     }
 }

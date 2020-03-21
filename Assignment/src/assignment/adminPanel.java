@@ -10,15 +10,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
-import javafx.beans.binding.IntegerExpression;
 
 /**
  *
@@ -60,12 +53,14 @@ public class adminPanel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         StockTable = new javax.swing.JTable();
-        goBackBtn = new javax.swing.JButton();
+        btnUpdatePassword = new javax.swing.JButton();
+        btnGoBack = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
         updateBtn = new javax.swing.JButton();
         bg = new javax.swing.JLabel();
@@ -89,13 +84,21 @@ public class adminPanel extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 1000, 320));
 
-        goBackBtn.setText("Go Back");
-        goBackBtn.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdatePassword.setText("Update  Password");
+        btnUpdatePassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                goBackBtnActionPerformed(evt);
+                btnUpdatePasswordActionPerformed(evt);
             }
         });
-        getContentPane().add(goBackBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 80, 100, 50));
+        getContentPane().add(btnUpdatePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 350, 150, 50));
+
+        btnGoBack.setText("Go Back");
+        btnGoBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGoBackActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnGoBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 80, 100, 50));
 
         btnExit.setText("Exit");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
@@ -120,6 +123,20 @@ public class adminPanel extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnUpdatePasswordActionPerformed(java.awt.event.ActionEvent evt) {
+        char[] password = GUI_Class.showPasswordBox();
+        if (GUI_Class.passwordMatching(new String(password)) == 1) {
+            GUI_Class.showMessageBox("You cannot Change to the same Password ! ");
+        } else {
+            if (DB.updatePassword(new String(password)) == 0) {
+                GUI_Class.showMessageBox("Password changed !");
+                GUI_Class.showGUI();
+                dispose();
+            }
+        }
+
+    }
+
     private void loggingStock() {
         for (int i = 0; i < model.getRowCount(); i++) {
             String data = model.getValueAt(i, 0).toString();
@@ -127,14 +144,12 @@ public class adminPanel extends javax.swing.JFrame {
         }
     }
 
-    private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {
-        DB.Logger(2, 1);
+    private void btnGoBackActionPerformed(java.awt.event.ActionEvent evt) {
+        GUI_Class.showGUI();
         dispose();
-        GUI gui = new GUI();
-        gui.setVisible(true);
     }
 
-    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_updateBtnActionPerformed
+    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {
         List<String> numData = new ArrayList<String>();
         String[] value = DB.returnAll();
         String data = value[0] + "\n";
@@ -156,7 +171,7 @@ public class adminPanel extends javax.swing.JFrame {
         }
     }
 
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnExitActionPerformed
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {
         GUI_Class.exitSoftware();
     }
 
@@ -206,7 +221,8 @@ public class adminPanel extends javax.swing.JFrame {
     private javax.swing.JTable StockTable;
     private javax.swing.JLabel bg;
     private javax.swing.JButton btnExit;
-    private javax.swing.JButton goBackBtn;
+    private javax.swing.JButton btnGoBack;
+    private javax.swing.JButton btnUpdatePassword;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables

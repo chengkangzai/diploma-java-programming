@@ -5,6 +5,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,6 +15,8 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.xml.bind.DatatypeConverter;
+
 public class DB {
 
     public static final String DBFileName = "stock.csv";
@@ -20,6 +24,9 @@ public class DB {
 
     public static final String LoggerFileName = "log.txt";
     final static Path loggerPath = Paths.get(LoggerFileName);
+
+    public static final String secretFileName = "secret.txt";
+    final static Path secretPath = Paths.get(secretFileName);
 
     public static String[] returnAll() {
         List<String> data = null;
@@ -253,7 +260,7 @@ public class DB {
         return img;
     }
 
-    public static void reduceStock(String id) {
+    public static int reduceStock(String id) {
         String[] data = returnAll();
         int idd = Integer.valueOf(id);
         String line = data[idd];
@@ -270,11 +277,7 @@ public class DB {
         }
 
         int status = deleteAndWriteAgain(info);
-        if (status == 0) {
-            System.out.println("Modifies success ");
-        } else {
-            System.out.println("Modifies Error");
-        }
+        return status;
     }
 
     public static int deleteAndWriteAgain(String data) {
@@ -340,6 +343,49 @@ public class DB {
         return status;
     }
 
+    public static String getHash(byte[] inputBytes, String algorithm) {
+        String hashValue = "";
+        try {
+            MessageDigest md = MessageDigest.getInstance(algorithm);
+            md.update(inputBytes);
+            byte[] digestedByte = md.digest();
+            hashValue = DatatypeConverter.printHexBinary(digestedByte).toLowerCase();
+        } catch (NoSuchAlgorithmException e) {
+            System.out.println(e.getMessage());
+        }
+        return hashValue;
+    }
+
+    public static int updatePassword(String password) {
+        String algorithm = "SHA-256";
+        String hashValue = getHash(password.getBytes(), algorithm);
+
+        int status = 0;
+        try {
+            Files.write(secretPath, hashValue.getBytes(), StandardOpenOption.TRUNCATE_EXISTING,
+                    StandardOpenOption.CREATE);
+        } catch (IOException ex) {
+            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            status = 1;
+        }
+
+        return status;
+
+    }
+
+    public static String returnPassword() {
+        List<String> data = null;
+        try {
+            data = Files.readAllLines(secretPath);
+        } catch (IOException e) {
+            System.out.println("Error!");
+            System.out.println(e.getMessage());
+        }
+        // populate the data from list into String[]
+
+        return data.get(0);
+
+    }
     // DB Stucter
     // ID , Name , Price , Stock , Image , Available V
     // TODO
