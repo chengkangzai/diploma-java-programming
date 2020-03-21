@@ -11,9 +11,8 @@ import javax.swing.ImageIcon;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
+
+import assignment.GUI_Class;
 
 /**
  *
@@ -27,17 +26,23 @@ public final class GUI extends javax.swing.JFrame {
      */
     private static final long serialVersionUID = 1L;
 
-    public void refresh() {
+    private void Grouping() {
+        initializeBuyBtnToArrayList();
+        initializePicToArrayList();
+        initializeStockNameToArrayList();
+        initializeStockPriceToArrayList();
+    }
 
+    private void initializer() {
         initializeImageIcon();
         initializeName();
         initializePrice();
-
     }
 
+    // Processing Stock Image STARTED
     ArrayList<JLabel> stockPicAL = new ArrayList<>();
 
-    public void initializePicToArrayList() {
+    private void initializePicToArrayList() {
         stockPicAL.add(No1pic);
         stockPicAL.add(No2pic);
         stockPicAL.add(No3pic);
@@ -49,7 +54,7 @@ public final class GUI extends javax.swing.JFrame {
         disablePicByAvail();
     }
 
-    public void initializeImageIcon() {
+    private void initializeImageIcon() {
         ArrayList<String> picUrl = DB.returnAllPicUrl();
         if (!(picUrl.size() <= 7)) {
             for (int i = 0; i < stockPicAL.size(); i++) {
@@ -60,7 +65,7 @@ public final class GUI extends javax.swing.JFrame {
         }
     }
 
-    public void disablePicByAvail() {
+    private void disablePicByAvail() {
         ArrayList<String> avail = DB.returnAllStock();
         for (int i = 0; i < avail.size(); i++) {
             if ("0".equals(avail.get(i))) {
@@ -69,9 +74,22 @@ public final class GUI extends javax.swing.JFrame {
         }
     }
 
+    private void disablePicById(int id) {
+        id--;
+        for (int i = 0; i < stockPicAL.size(); i++) {
+            if (id == i) {
+                stockPicAL.get(i).setEnabled(true);
+            } else {
+                stockPicAL.get(i).setEnabled(false);
+            }
+        }
+    }
+    // Processing Stock Image ENDED
+
+    // Processing Stock Name STARTED
     ArrayList<JLabel> stockNameAL = new ArrayList<>();
 
-    public void initializeStockNameToArrayList() {
+    private void initializeStockNameToArrayList() {
         stockNameAL.add(Name1);
         stockNameAL.add(Name2);
         stockNameAL.add(Name3);
@@ -82,7 +100,7 @@ public final class GUI extends javax.swing.JFrame {
         stockNameAL.add(Name8);
     }
 
-    public void initializeName() {
+    private void initializeName() {
         ArrayList<String> stockName = DB.returnAllStockName();
         if (!(stockName.size() <= 7)) {
             for (int i = 0; i < stockNameAL.size(); i++) {
@@ -92,10 +110,12 @@ public final class GUI extends javax.swing.JFrame {
             GUI_Class.showMessageBox("Not enough record in Database");
         }
     }
+    // Processing Stock Name ENDED
 
+    // Processing Stock Price STARTED
     ArrayList<JLabel> priceAL = new ArrayList<>();
 
-    public void initializeStockPriceToArrayList() {
+    private void initializeStockPriceToArrayList() {
         priceAL.add(Price1);
         priceAL.add(Price2);
         priceAL.add(Price3);
@@ -106,7 +126,7 @@ public final class GUI extends javax.swing.JFrame {
         priceAL.add(Price8);
     }
 
-    public void initializePrice() {
+    private void initializePrice() {
         ArrayList<String> price = DB.returnAllStockPrice();
         if (!(price.size() <= 7)) {
             for (int i = 0; i < priceAL.size(); i++) {
@@ -116,10 +136,12 @@ public final class GUI extends javax.swing.JFrame {
             GUI_Class.showMessageBox("Not enough record in Database");
         }
     }
+    // Processing Stock Price ENDED
 
+    // Processing Buy Button for each stock STARTED
     ArrayList<JButton> buyBtnAL = new ArrayList<>();
 
-    public void initializeBuyBtnToArrayList() {
+    private void initializeBuyBtnToArrayList() {
         buyBtnAL.add(Buy1);
         buyBtnAL.add(Buy2);
         buyBtnAL.add(Buy3);
@@ -128,10 +150,10 @@ public final class GUI extends javax.swing.JFrame {
         buyBtnAL.add(Buy6);
         buyBtnAL.add(Buy7);
         buyBtnAL.add(Buy8);
-        disableBtnByAvail();
+        disableBuyBtnByAvail();
     }
 
-    public void disableBtnByAvail() {
+    private void disableBuyBtnByAvail() {
         ArrayList<String> avail = DB.returnAllStock();
         for (int i = 0; i < avail.size(); i++) {
             if ("0".equals(avail.get(i))) {
@@ -140,36 +162,18 @@ public final class GUI extends javax.swing.JFrame {
         }
     }
 
-    public void disableAllBuyBtn() {
+    private void disableAllBuyBtn() {
         for (int i = 0; i < buyBtnAL.size(); i++) {
             buyBtnAL.get(i).setEnabled(false);
         }
     }
 
-    public void enableAllBuyBtn() {
+    private void enableAllBuyBtn() {
         for (int i = 0; i < buyBtnAL.size(); i++) {
             buyBtnAL.get(i).setEnabled(true);
         }
     }
-
-    ArrayList<JButton> payBtnAL = new ArrayList<>();
-
-    public void initializePayBtnToArrayList() {
-        payBtnAL.add(btnPay1);
-        payBtnAL.add(btnPay2);
-    }
-
-    public void enableAllPayBtn() {
-        for (int i = 0; i < payBtnAL.size(); i++) {
-            payBtnAL.get(i).setEnabled(true);
-        }
-    }
-
-    public void disenableAllPayBtn() {
-        for (int i = 0; i < payBtnAL.size(); i++) {
-            payBtnAL.get(i).setEnabled(false);
-        }
-    }
+    // Processing Buy Button for each stock ENDED
 
     /**
      * Creates new form GUI
@@ -177,15 +181,10 @@ public final class GUI extends javax.swing.JFrame {
     public GUI() {
         // Swing component
         initComponents();
-        // Button Component
-        initializeBuyBtnToArrayList();
-        initializePayBtnToArrayList();
-        // Array List of component
-        initializePicToArrayList();
-        initializeStockNameToArrayList();
-        initializeStockPriceToArrayList();
+        // make it array list and prepare to Initialized
+        Grouping();
         // run initializer
-        refresh();
+        initializer();
     }
 
     /**
@@ -462,32 +461,28 @@ public final class GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public int selectedID;
+    public int selectedID; // record the selected Drink
 
-    private void btnGoAdminActionPerformed(java.awt.event.ActionEvent evt) {//
-
-        JPanel panel = new JPanel();
-        JLabel label = new JLabel("Enter a password:");
-        JPasswordField pass = new JPasswordField(10);
-        panel.add(label);
-        panel.add(pass);
-        String[] options = new String[] { "OK", "Cancel" };
-        int option = JOptionPane.showOptionDialog(null, panel, "The title", JOptionPane.NO_OPTION,
-                JOptionPane.PLAIN_MESSAGE, null, options, options[1]);
-
-        char[] password = pass.getPassword();
-
-        if ("password".equals(String.valueOf(password))) {
-            adminPanel adminPL = new adminPanel();
-            DB.Logger(2, 0);
-            adminPL.setVisible(true);
+    private void btnGoAdminActionPerformed(java.awt.event.ActionEvent evt) {
+        // If password is default (password) -- easier for assignment marker
+        if (GUI_Class.passwordMatching("password") == 1) {
+            GUI_Class.showMessageBox("Default Password detected ! Default Password : password");
+        }
+        // Get password from the password field
+        char[] password = GUI_Class.showPasswordBox();
+        // Try to match the password
+        if (GUI_Class.passwordMatching(new String(password)) == 1) {
+            // Password match, show admin panel
+            GUI_Class.showAdminPanel();
             dispose();
+        } else {
+            // Password do not match
+            GUI_Class.showMessageBox("The password is wrong ! Please try again.");
         }
     }
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {
         GUI_Class.exitSoftware();
-        // dispose();
     }
 
     private void btnPay1ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -503,109 +498,112 @@ public final class GUI extends javax.swing.JFrame {
     private void Buy1ActionPerformed(java.awt.event.ActionEvent evt) {
         int id = 1;
         String price = DB.getStockPriceByID(String.valueOf(id));
+        selectedID = id;
         updateTotalPayable(price);
     }
 
     private void Buy2ActionPerformed(java.awt.event.ActionEvent evt) {
         int id = 2;
         String price = DB.getStockPriceByID(String.valueOf(id));
-        updateTotalPayable(price);
         selectedID = id;
+        updateTotalPayable(price);
     }
 
     private void Buy3ActionPerformed(java.awt.event.ActionEvent evt) {
         int id = 3;
         String price = DB.getStockPriceByID(String.valueOf(id));
-        updateTotalPayable(price);
         selectedID = id;
+        updateTotalPayable(price);
     }
 
     private void Buy4ActionPerformed(java.awt.event.ActionEvent evt) {
         int id = 4;
         String price = DB.getStockPriceByID(String.valueOf(id));
-        updateTotalPayable(price);
         selectedID = id;
+        updateTotalPayable(price);
     }
 
     private void Buy5ActionPerformed(java.awt.event.ActionEvent evt) {
         int id = 5;
         String price = DB.getStockPriceByID(String.valueOf(id));
-        updateTotalPayable(price);
         selectedID = id;
+        updateTotalPayable(price);
     }
 
     private void Buy6ActionPerformed(java.awt.event.ActionEvent evt) {
         int id = 6;
         String price = DB.getStockPriceByID(String.valueOf(id));
-        updateTotalPayable(price);
         selectedID = id;
+        updateTotalPayable(price);
     }
 
     private void Buy7ActionPerformed(java.awt.event.ActionEvent evt) {
         int id = 7;
         String price = DB.getStockPriceByID(String.valueOf(id));
-        updateTotalPayable(price);
         selectedID = id;
+        updateTotalPayable(price);
     }
 
     private void Buy8ActionPerformed(java.awt.event.ActionEvent evt) {
         int id = 8;
         String price = DB.getStockPriceByID(String.valueOf(id));
-        updateTotalPayable(price);
         selectedID = id;
+        updateTotalPayable(price);
     }
 
-    public void updateTotalPayable(String addedPrice) {
+    private static String convertToStringDecimal(double input) {
+        // Convert double to string by using Decimal Format
+        DecimalFormat df = new DecimalFormat("###.###");
+        String output = df.format(input);
+        return output;
+    }
+
+    private void updateTotalPayable(String addedPrice) {
+        // Current Text of Payable text
         String current = PayableBox.getText();
-        if ("".equals(current) || "|".equals(current)) {
-            double s = Double.valueOf(addedPrice);
-            DecimalFormat df = new DecimalFormat("###.###");
-            String output = df.format(s);
-            PayableBox.setText(String.valueOf(output));
+        // Payable text equal to "|" ? Change it to the added price : add
+        if ("|".equals(current)) {
+            double add = Double.valueOf(addedPrice);
+            PayableBox.setText(convertToStringDecimal(add));
         } else {
             double current1 = Double.parseDouble(current);
             double add = Double.parseDouble(addedPrice);
             current1 += add;
-            DecimalFormat df = new DecimalFormat("###.###");
-            String output = df.format(current1);
-            PayableBox.setText(String.valueOf(output));
+            PayableBox.setText(convertToStringDecimal(current1));
         }
         updateTotalRemaining();
     }
 
-    public void updateTotalReceived(Double addedPrice) {
+    private void updateTotalReceived(Double addedPrice) {
         // payable empty ? block ppl to change the data :
         // received box empty ?
         String payable = PayableBox.getText();
-        if ("".equals(payable) || "|".equals(payable)) {
+        if ("|".equals(payable)) {
             GUI_Class.showMessageBox("Please choose an drink first ");
         } else {
             String current = ReceivedBox.getText();
             if ("".equals(current) || "|".equals(current)) {
                 double s = addedPrice;
-                DecimalFormat df = new DecimalFormat("###.###");
-                String output = df.format(s);
-                ReceivedBox.setText(String.valueOf(output));
+                ReceivedBox.setText(convertToStringDecimal(s));
                 updateTotalRemaining();
             } else {
                 double current1 = Double.parseDouble(current);
                 double add = addedPrice;
                 current1 += add;
-                DecimalFormat df = new DecimalFormat("###.###");
-                String output = df.format(current1);
-                ReceivedBox.setText(String.valueOf(output));
+                ReceivedBox.setText(convertToStringDecimal(current1));
                 updateTotalRemaining();
             }
         }
 
     }
 
-    public void updateTotalRemaining() {
+    private void updateTotalRemaining() {
         disableAllBuyBtn();
+        disablePicById(selectedID);
         String payable = PayableBox.getText();
         String received = ReceivedBox.getText();
 
-        if (!("|".equals(payable) || "|".equals(received))) {
+        if (!("|".equals(received))) {
             // If it equal to | or is empty
             Double payable1 = Double.valueOf(payable);
             Double received1 = Double.valueOf(received);
@@ -616,11 +614,8 @@ public final class GUI extends javax.swing.JFrame {
                 GUI_Class.showMessageBox("You are giving out too much money!\n Transaction cancel !");
                 resetCounter();
             } else if (remaining > 0) {
-                DecimalFormat df = new DecimalFormat("###.###");
-                String output = df.format(remaining);
-                // Remaining is more than 0
                 // Ask ppl to pay
-                RemainingPayableBox.setText(String.valueOf(output));
+                RemainingPayableBox.setText(convertToStringDecimal(remaining));
             } else {
                 // Remaining is equal to 0
                 // Set Check out
@@ -629,14 +624,14 @@ public final class GUI extends javax.swing.JFrame {
                 GUI_Class.sayThanks();
                 resetCounter();
                 enableAllBuyBtn();
-                dispose();
                 GUI gui = new GUI();
                 gui.setVisible(true);
+                dispose();
             }
         }
     }
 
-    public void resetCounter() {
+    private void resetCounter() {
         PayableBox.setText("|");
         ReceivedBox.setText("|");
         RemainingPayableBox.setText("|");
