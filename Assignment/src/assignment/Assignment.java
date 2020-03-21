@@ -10,16 +10,12 @@ public class Assignment {
     /**
      * @param args the command line arguments
      */
+
     public static void main(String[] args) {
         DB.Logger(3, 0);
-
         GUI gui = new GUI();
         gui.setVisible(true);
-        
-        //System.out.println("Please enter an id");
-        //Scanner read = new Scanner(System.in);
-        //String id =read.nextLine();
-        //DB.reduceStock(id);
+
 
         // 1. Define UI Class --> GUI
         // 2. Calculation Logic with proper method --> Stock
