@@ -12,7 +12,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-import assignment.GUI_Class;
 
 /**
  *
@@ -20,29 +19,28 @@ import assignment.GUI_Class;
  */
 public final class GUI extends javax.swing.JFrame {
 
-    private int totalPayable;
     /**
      *
      */
     private static final long serialVersionUID = 1L;
 
     private void Grouping() {
-        initializeBuyBtnToArrayList();
-        initializePicToArrayList();
-        initializeStockNameToArrayList();
-        initializeStockPriceToArrayList();
+        setBuyBtnToArrayList();
+        setPicToArrayList();
+        setStockNameToArrayList();
+        setStockPriceToArrayList();
     }
 
     private void initializer() {
-        initializeImageIcon();
-        initializeName();
-        initializePrice();
+        setStockImageIcon();
+        setStockName();
+        setStockPrice();
     }
 
     // Processing Stock Image STARTED
     ArrayList<JLabel> stockPicAL = new ArrayList<>();
 
-    private void initializePicToArrayList() {
+    private void setPicToArrayList() {
         stockPicAL.add(No1pic);
         stockPicAL.add(No2pic);
         stockPicAL.add(No3pic);
@@ -54,7 +52,7 @@ public final class GUI extends javax.swing.JFrame {
         disablePicByAvail();
     }
 
-    private void initializeImageIcon() {
+    private void setStockImageIcon() {
         ArrayList<String> picUrl = DB.returnAllPicUrl();
         if (!(picUrl.size() <= 7)) {
             for (int i = 0; i < stockPicAL.size(); i++) {
@@ -89,7 +87,7 @@ public final class GUI extends javax.swing.JFrame {
     // Processing Stock Name STARTED
     ArrayList<JLabel> stockNameAL = new ArrayList<>();
 
-    private void initializeStockNameToArrayList() {
+    private void setStockNameToArrayList() {
         stockNameAL.add(Name1);
         stockNameAL.add(Name2);
         stockNameAL.add(Name3);
@@ -100,7 +98,7 @@ public final class GUI extends javax.swing.JFrame {
         stockNameAL.add(Name8);
     }
 
-    private void initializeName() {
+    private void setStockName() {
         ArrayList<String> stockName = DB.returnAllStockName();
         if (!(stockName.size() <= 7)) {
             for (int i = 0; i < stockNameAL.size(); i++) {
@@ -115,7 +113,7 @@ public final class GUI extends javax.swing.JFrame {
     // Processing Stock Price STARTED
     ArrayList<JLabel> priceAL = new ArrayList<>();
 
-    private void initializeStockPriceToArrayList() {
+    private void setStockPriceToArrayList() {
         priceAL.add(Price1);
         priceAL.add(Price2);
         priceAL.add(Price3);
@@ -126,7 +124,7 @@ public final class GUI extends javax.swing.JFrame {
         priceAL.add(Price8);
     }
 
-    private void initializePrice() {
+    private void setStockPrice() {
         ArrayList<String> price = DB.returnAllStockPrice();
         if (!(price.size() <= 7)) {
             for (int i = 0; i < priceAL.size(); i++) {
@@ -141,7 +139,7 @@ public final class GUI extends javax.swing.JFrame {
     // Processing Buy Button for each stock STARTED
     ArrayList<JButton> buyBtnAL = new ArrayList<>();
 
-    private void initializeBuyBtnToArrayList() {
+    private void setBuyBtnToArrayList() {
         buyBtnAL.add(Buy1);
         buyBtnAL.add(Buy2);
         buyBtnAL.add(Buy3);
@@ -185,6 +183,7 @@ public final class GUI extends javax.swing.JFrame {
         Grouping();
         // run initializer
         initializer();
+        btnCancel.setEnabled(false);
     }
 
     /**
@@ -196,7 +195,8 @@ public final class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         No1pic = new javax.swing.JLabel();
@@ -232,8 +232,9 @@ public final class GUI extends javax.swing.JFrame {
         Name7 = new javax.swing.JLabel();
         Name8 = new javax.swing.JLabel();
         btnPay1 = new javax.swing.JButton();
-        btnGoAdmin = new javax.swing.JButton();
         btnPay2 = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
+        btnGoAdmin = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
         lblTotalPayable = new javax.swing.JLabel();
         lblTotalReceived = new javax.swing.JLabel();
@@ -248,38 +249,30 @@ public final class GUI extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        No1pic.setIcon(new javax.swing.ImageIcon(
-                "D:\\Users\\ASUS\\Documents\\NetBeansProjects\\Assignment\\src\\assignment\\asset\\pic\\temp\\temp.jpg")); // NOI18N
+        No1pic.setIcon(new javax.swing.ImageIcon("D:\\Users\\ASUS\\Documents\\NetBeansProjects\\Assignment\\src\\assignment\\asset\\pic\\temp\\temp.jpg")); // NOI18N
         getContentPane().add(No1pic, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 46, -1, -1));
 
-        No2pic.setIcon(new javax.swing.ImageIcon(
-                "D:\\Users\\ASUS\\Documents\\NetBeansProjects\\Assignment\\src\\assignment\\asset\\pic\\temp\\temp.jpg")); // NOI18N
+        No2pic.setIcon(new javax.swing.ImageIcon("D:\\Users\\ASUS\\Documents\\NetBeansProjects\\Assignment\\src\\assignment\\asset\\pic\\temp\\temp.jpg")); // NOI18N
         getContentPane().add(No2pic, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 46, -1, -1));
 
-        No3pic.setIcon(new javax.swing.ImageIcon(
-                "D:\\Users\\ASUS\\Documents\\NetBeansProjects\\Assignment\\src\\assignment\\asset\\pic\\temp\\temp.jpg")); // NOI18N
+        No3pic.setIcon(new javax.swing.ImageIcon("D:\\Users\\ASUS\\Documents\\NetBeansProjects\\Assignment\\src\\assignment\\asset\\pic\\temp\\temp.jpg")); // NOI18N
         getContentPane().add(No3pic, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 46, -1, -1));
 
-        No4pic.setIcon(new javax.swing.ImageIcon(
-                "D:\\Users\\ASUS\\Documents\\NetBeansProjects\\Assignment\\src\\assignment\\asset\\pic\\temp\\temp.jpg")); // NOI18N
+        No4pic.setIcon(new javax.swing.ImageIcon("D:\\Users\\ASUS\\Documents\\NetBeansProjects\\Assignment\\src\\assignment\\asset\\pic\\temp\\temp.jpg")); // NOI18N
         getContentPane().add(No4pic, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 46, -1, -1));
 
-        No5pic.setIcon(new javax.swing.ImageIcon(
-                "D:\\Users\\ASUS\\Documents\\NetBeansProjects\\Assignment\\src\\assignment\\asset\\pic\\temp\\temp.jpg")); // NOI18N
+        No5pic.setIcon(new javax.swing.ImageIcon("D:\\Users\\ASUS\\Documents\\NetBeansProjects\\Assignment\\src\\assignment\\asset\\pic\\temp\\temp.jpg")); // NOI18N
         getContentPane().add(No5pic, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 363, -1, -1));
 
-        No6pic.setIcon(new javax.swing.ImageIcon(
-                "D:\\Users\\ASUS\\Documents\\NetBeansProjects\\Assignment\\src\\assignment\\asset\\pic\\temp\\temp.jpg")); // NOI18N
+        No6pic.setIcon(new javax.swing.ImageIcon("D:\\Users\\ASUS\\Documents\\NetBeansProjects\\Assignment\\src\\assignment\\asset\\pic\\temp\\temp.jpg")); // NOI18N
         getContentPane().add(No6pic, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 363, -1, -1));
 
-        No7pic.setIcon(new javax.swing.ImageIcon(
-                "D:\\Users\\ASUS\\Documents\\NetBeansProjects\\Assignment\\src\\assignment\\asset\\pic\\temp\\temp.jpg")); // NOI18N
+        No7pic.setIcon(new javax.swing.ImageIcon("D:\\Users\\ASUS\\Documents\\NetBeansProjects\\Assignment\\src\\assignment\\asset\\pic\\temp\\temp.jpg")); // NOI18N
         getContentPane().add(No7pic, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 363, -1, -1));
 
         No8pic.setBackground(new java.awt.Color(255, 255, 255));
         No8pic.setForeground(new java.awt.Color(255, 255, 255));
-        No8pic.setIcon(new javax.swing.ImageIcon(
-                "D:\\Users\\ASUS\\Documents\\NetBeansProjects\\Assignment\\src\\assignment\\asset\\pic\\temp\\temp.jpg")); // NOI18N
+        No8pic.setIcon(new javax.swing.ImageIcon("D:\\Users\\ASUS\\Documents\\NetBeansProjects\\Assignment\\src\\assignment\\asset\\pic\\temp\\temp.jpg")); // NOI18N
         getContentPane().add(No8pic, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 363, -1, -1));
 
         Buy1.setText("Buy");
@@ -402,14 +395,6 @@ public final class GUI extends javax.swing.JFrame {
         });
         getContentPane().add(btnPay1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 350, 100, 50));
 
-        btnGoAdmin.setText("Admin");
-        btnGoAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGoAdminActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnGoAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 600, 100, 50));
-
         btnPay2.setText("RM 1");
         btnPay2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -417,6 +402,22 @@ public final class GUI extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnPay2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 410, 100, 50));
+
+        btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 470, 100, 50));
+
+        btnGoAdmin.setText("Admin");
+        btnGoAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGoAdminActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnGoAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 600, 100, 50));
 
         btnExit.setText("Exit");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
@@ -451,8 +452,7 @@ public final class GUI extends javax.swing.JFrame {
 
         RemainingPayableBox.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         RemainingPayableBox.setText("|");
-        getContentPane().add(RemainingPayableBox,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 230, 160, 70));
+        getContentPane().add(RemainingPayableBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 230, 160, 70));
 
         bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assignment/asset/pic/temp/bg.jpg"))); // NOI18N
         bg.setText("jLabel2");
@@ -462,6 +462,11 @@ public final class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public int selectedID; // record the selected Drink
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {
+        GUI_Class.showGUI();
+        dispose();
+    }
 
     private void btnGoAdminActionPerformed(java.awt.event.ActionEvent evt) {
         // If password is default (password) -- easier for assignment marker
@@ -551,7 +556,7 @@ public final class GUI extends javax.swing.JFrame {
         updateTotalPayable(price);
     }
 
-    private static String convertToStringDecimal(double input) {
+    private static String convertToString(double input) {
         // Convert double to string by using Decimal Format
         DecimalFormat df = new DecimalFormat("###.###");
         String output = df.format(input);
@@ -561,15 +566,14 @@ public final class GUI extends javax.swing.JFrame {
     private void updateTotalPayable(String addedPrice) {
         // Current Text of Payable text
         String current = PayableBox.getText();
+        double add = Double.valueOf(addedPrice);
         // Payable text equal to "|" ? Change it to the added price : add
         if ("|".equals(current)) {
-            double add = Double.valueOf(addedPrice);
-            PayableBox.setText(convertToStringDecimal(add));
+            PayableBox.setText(convertToString(add));
         } else {
-            double current1 = Double.parseDouble(current);
-            double add = Double.parseDouble(addedPrice);
-            current1 += add;
-            PayableBox.setText(convertToStringDecimal(current1));
+            double output = Double.parseDouble(current);
+            output += add;
+            PayableBox.setText(convertToString(output));
         }
         updateTotalRemaining();
     }
@@ -582,24 +586,25 @@ public final class GUI extends javax.swing.JFrame {
             GUI_Class.showMessageBox("Please choose an drink first ");
         } else {
             String current = ReceivedBox.getText();
+            double add = addedPrice;
             if ("".equals(current) || "|".equals(current)) {
-                double s = addedPrice;
-                ReceivedBox.setText(convertToStringDecimal(s));
-                updateTotalRemaining();
+                ReceivedBox.setText(convertToString(add));
             } else {
-                double current1 = Double.parseDouble(current);
-                double add = addedPrice;
-                current1 += add;
-                ReceivedBox.setText(convertToStringDecimal(current1));
-                updateTotalRemaining();
+                double output = Double.parseDouble(current);
+                output += add;
+                ReceivedBox.setText(convertToString(output));
             }
+            updateTotalRemaining();
         }
 
     }
 
     private void updateTotalRemaining() {
+        //Disable Some function 
         disableAllBuyBtn();
         disablePicById(selectedID);
+        btnCancel.setEnabled(true);
+        //Disable Some function 
         String payable = PayableBox.getText();
         String received = ReceivedBox.getText();
 
@@ -611,11 +616,11 @@ public final class GUI extends javax.swing.JFrame {
             if (remaining < 0) {
                 // Remaining is less then 0
                 // Blocking ppl to use
-                GUI_Class.showMessageBox("You are giving out too much money!\n Transaction cancel !");
+                GUI_Class.showMessageBox("You are giving out too much money!\n Eject Money !");
                 resetCounter();
             } else if (remaining > 0) {
                 // Ask ppl to pay
-                RemainingPayableBox.setText(convertToStringDecimal(remaining));
+                RemainingPayableBox.setText(convertToString(remaining));
             } else {
                 // Remaining is equal to 0
                 // Set Check out
@@ -710,6 +715,7 @@ public final class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel ReceivedBox;
     private javax.swing.JLabel RemainingPayableBox;
     private javax.swing.JLabel bg;
+    private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnGoAdmin;
     private javax.swing.JButton btnPay1;

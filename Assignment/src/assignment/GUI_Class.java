@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 
-public class GUI_Class {
+public class GUI_Class  {
 
     public static void showConfirmDialog(String s) {
         final JFrame parent = new JFrame();
@@ -24,7 +24,7 @@ public class GUI_Class {
                 break;
 
             case 2:
-                JOptionPane.showMessageDialog(parent, "Cacel is return");
+                JOptionPane.showMessageDialog(parent, "Cancel is return");
                 break;
 
         }
@@ -47,7 +47,8 @@ public class GUI_Class {
 
     public static void exitSoftware() {
         final JFrame parent = new JFrame();
-        final int showConfirmDialog = JOptionPane.showConfirmDialog(parent, "Are you sure you want to exit");
+        final int showConfirmDialog = JOptionPane.showConfirmDialog(parent, "Are you sure you want to exit ?", "Exit Confirmation", 1);
+        
         switch (showConfirmDialog) {
             case 0:
                 DB.Logger(3, 1);

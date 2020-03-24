@@ -26,7 +26,7 @@ public class adminPanel extends javax.swing.JFrame {
      * Creates new form adminPanel
      */
 
-    public void initializedTable() {
+    private void initializedTable() {
         model = (DefaultTableModel) StockTable.getModel();
         String[] data = DB.returnAll();
         for (int i = 1; i < data.length; i++) {
