@@ -1,5 +1,7 @@
 package assignment;
 
+import MyLogger.GuiLog;
+import MyLogger.ProgramLog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -51,7 +53,8 @@ public class GUI_Class  {
         
         switch (showConfirmDialog) {
             case 0:
-                DB.Logger(3, 1);
+                ProgramLog pl = new ProgramLog(1);
+                pl.log();
                 System.exit(0);
                 break;
 
@@ -92,14 +95,16 @@ public class GUI_Class  {
     }
 
     public static void showGUI() {
-        DB.Logger(2, 1);
+        GuiLog gl =new GuiLog(0,"GUI");
+        gl.log();
         GUI gui = new GUI();
         gui.setVisible(true);
         
     }
 
     public static void showAdminPanel() {
-        DB.Logger(2, 0);
+        GuiLog gl = new GuiLog(0,"Admin Panel");
+        gl.log();
         adminPanel adminPL = new adminPanel();
         adminPL.setVisible(true);
     }

@@ -5,6 +5,7 @@
  */
 package assignment;
 
+import MyLogger.PurchaseLog;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -140,7 +141,8 @@ public class adminPanel extends javax.swing.JFrame {
     private void loggingStock() {
         for (int i = 0; i < model.getRowCount(); i++) {
             String data = model.getValueAt(i, 0).toString();
-            DB.Logger(1, Integer.valueOf(data));
+            PurchaseLog pl = new PurchaseLog(data);
+            pl.log();
         }
     }
 

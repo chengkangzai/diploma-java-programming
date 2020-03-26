@@ -5,6 +5,7 @@
  */
 package assignment;
 
+import MyLogger.PurchaseLog;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -37,7 +38,7 @@ public final class GUI extends javax.swing.JFrame {
         setStockPrice();
     }
 
-    // Processing Stock Image STARTED
+    // Populate Stock Image STARTED
     ArrayList<JLabel> stockPicAL = new ArrayList<>();
 
     private void setPicToArrayList() {
@@ -82,9 +83,9 @@ public final class GUI extends javax.swing.JFrame {
             }
         }
     }
-    // Processing Stock Image ENDED
+    // Populate Stock Image ENDED
 
-    // Processing Stock Name STARTED
+    // Populate Stock Name STARTED
     ArrayList<JLabel> stockNameAL = new ArrayList<>();
 
     private void setStockNameToArrayList() {
@@ -108,9 +109,9 @@ public final class GUI extends javax.swing.JFrame {
             GUI_Class.showMessageBox("Not enough record in Database");
         }
     }
-    // Processing Stock Name ENDED
+    // Populate Stock Name ENDED
 
-    // Processing Stock Price STARTED
+    // Populate Stock Price STARTED
     ArrayList<JLabel> priceAL = new ArrayList<>();
 
     private void setStockPriceToArrayList() {
@@ -134,9 +135,9 @@ public final class GUI extends javax.swing.JFrame {
             GUI_Class.showMessageBox("Not enough record in Database");
         }
     }
-    // Processing Stock Price ENDED
+    // Populate Stock Price ENDED
 
-    // Processing Buy Button for each stock STARTED
+    // Populate Buy Button for each stock STARTED
     ArrayList<JButton> buyBtnAL = new ArrayList<>();
 
     private void setBuyBtnToArrayList() {
@@ -171,7 +172,7 @@ public final class GUI extends javax.swing.JFrame {
             buyBtnAL.get(i).setEnabled(true);
         }
     }
-    // Processing Buy Button for each stock ENDED
+    // Populate Buy Button for each stock ENDED
 
     /**
      * Creates new form GUI
@@ -245,6 +246,7 @@ public final class GUI extends javax.swing.JFrame {
         bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Vending mAchineeee");
         setLocationByPlatform(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -625,7 +627,8 @@ public final class GUI extends javax.swing.JFrame {
                 // Remaining is equal to 0
                 // Set Check out
                 DB.reduceStock(String.valueOf(selectedID));
-                DB.Logger(0, selectedID);
+                PurchaseLog pl = new PurchaseLog(String.valueOf(selectedID));
+                pl.log();
                 GUI_Class.sayThanks();
                 resetCounter();
                 enableAllBuyBtn();

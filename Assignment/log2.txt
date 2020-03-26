@@ -1,0 +1,24 @@
+[INFO]		 - [2020-03-26T13:31:37.351] - The Software was initialized
+[INFO]		 - [2020-03-26T13:31:53.609] - The Software was initialized
+[INFO]		 - [2020-03-26T13:31:53.609] - The Software was initialized
+[INFO]		 - [2020-03-26T13:33:54.535] - The Software was initialized
+[INFO]		 - [2020-03-26T13:33:54.535] - null
+[INFO]		 - [2020-03-26T13:34:14.723] - The Software was initialized
+[INFO]		 - [2020-03-26T13:34:14.723] - The Software was close
+[INFO]		 - [2020-03-26T13:46:28.968] - The Software was initialized
+[INFO]		 - [2020-03-26T13:46:28.968] - The Admin Panel was initialized
+[INFO]		 - [2020-03-26T13:46:28.968] - The GUI was initialized
+[INFO]		 - [2020-03-26T13:46:28.968] - The Software was close
+[INFO]		 - [2020-03-26T13:50:32.585] - The Software was initialized
+[WARNING]	 - [2020-03-26T13:50:32.585] - The Admin Panel was initialized
+[INFO]		 - [2020-03-26T13:50:32.585] - The GUI was initialized
+[WARNING]	 - [2020-03-26T13:50:32.585] - The Admin Panel was initialized
+[INFO]		 - [2020-03-26T13:50:32.585] - The Software was close
+[INFO]		 - [2020-03-26T13:59:23.195] - The Software was initialized
+[PURCHASE]	 - [2020-03-26T13:59:23.195] - A Purchase of Ah Huat White Coffee was made. Current Stock is5
+[INFO]		 - [2020-03-26T13:59:23.195] - The Software was close
+[INFO]		 - [2020-03-26T14:01:02.190] - The Software was initialized
+[PURCHASE]	 - [2020-03-26T14:01:02.190] - A Purchase of Ah Huat White Coffee was made. Current Stock is 4
+[INFO]		 - [2020-03-26T14:10:00.469+08:00[Asia/Singapore]] - The Software was initialized
+[INFO]		 - [2020-03-26T14:01:02.190] - The Software was close
+[INFO]		 - [2020-03-26 02:13:04] - The Software was initialized

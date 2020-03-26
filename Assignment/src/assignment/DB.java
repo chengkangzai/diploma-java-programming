@@ -22,9 +22,6 @@ public class DB {
     public static final String DBFileName = "stock.csv";
     final static Path dbPath = Paths.get(DBFileName);
 
-    public static final String LoggerFileName = "log.txt";
-    final static Path loggerPath = Paths.get(LoggerFileName);
-
     public static final String secretFileName = "secret.txt";
     final static Path secretPath = Paths.get(secretFileName);
 
@@ -42,6 +39,7 @@ public class DB {
         return container;
     }
 
+    // This is for testing purpose only, not use in production
     public static Object[] returnSplitedHeader() {
         String[] data = returnAll();
         List<String> head = null;
@@ -103,10 +101,12 @@ public class DB {
         return stock;
     }
 
+    // This is for testing purpose only, not use in production
     public static void echoAll() {
         System.out.println(Arrays.toString(returnAll()) + "\n");
     }
 
+    // This is for testing purpose only, not use in production
     public static void echoSplited() {
         String[] data = returnAll();
         Object[] header = returnSplitedHeader();
@@ -128,6 +128,7 @@ public class DB {
         }
     }
 
+    // This is for testing purpose only, not use in production
     public static void addLine() {
         // TODO :
         // No Negative number for price, stock
@@ -271,8 +272,8 @@ public class DB {
         data[idd] = splited[0] + "," + splited[1] + "," + splited[2] + "," + String.valueOf(newStock) + "," + splited[4]
                 + "," + splited[5];
 
-        String info = data[0] + "\n";
-        for (int i = 1; i < data.length; i++) {
+        String info = "";
+        for (int i = 0; i < data.length; i++) {
             info += data[i] + "\n";
         }
 
@@ -289,57 +290,6 @@ public class DB {
             status = 1;
         }
 
-        return status;
-    }
-
-    public static int Logger(int type, int id) {
-        int status = 0;
-        String head;
-        String body;
-        final String time = LocalDateTime.now().toString();
-        switch (type) {
-            case 0:
-                head = "[PURCHASE]\t - " + "[" + time + "] - ";
-                body = "A Purchase of " + getStockNameByID(String.valueOf(id)) + " was made" + ". Current Stock is "
-                        + getStockByID(String.valueOf(id));
-                break;
-            case 1:
-                head = "[UPDATE]\t - " + "[" + time + "] - ";
-                body = getStockNameByID(String.valueOf(id)) + " was restock " + ". Current Stock is "
-                        + getStockByID(String.valueOf(id));
-                break;
-            case 2:
-                String adminPLStatus = null;
-                if (id == 0) {
-                    adminPLStatus = "open";
-                } else if (id == 1) {
-                    adminPLStatus = "close";
-                }
-                head = "[WARNING]\t - " + "[" + time + "] - ";
-                body = "Admin Panel was " + adminPLStatus;
-                break;
-            case 3:
-                String softwareStatus = null;
-                if (id == 0) {
-                    softwareStatus = "initialized";
-                } else if (id == 1) {
-                    softwareStatus = "close";
-                }
-                head = "[INFO]\t\t - " + "[" + time + "] - ";
-                body = "The Software was " + softwareStatus;
-                break;
-            default:
-                head = "[ERROR]\t\t - " + "[" + time + "] - ";
-                body = "An Error is created in " + time + " While processing with stock id :" + id;
-                break;
-        }
-
-        String line = head + body + "\n";
-        try {
-            Files.write(loggerPath, line.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
-        } catch (IOException ex) {
-            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
-        }
         return status;
     }
 
