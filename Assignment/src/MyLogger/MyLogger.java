@@ -13,7 +13,7 @@ import java.time.format.DateTimeFormatter;
  * Logger
  */
 public class MyLogger {
-    protected static final String LoggerFileName = "log2.txt";
+    protected static final String LoggerFileName = "log.txt";
     protected static final Path loggerPath = Paths.get(LoggerFileName);
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
     protected final String time = LocalDateTime.now().atZone(ZoneId.systemDefault()).format(formatter).toString();
