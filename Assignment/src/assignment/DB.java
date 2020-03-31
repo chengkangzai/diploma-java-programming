@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,11 +18,11 @@ import javax.xml.bind.DatatypeConverter;
 
 public class DB {
 
-    public static final String DBFileName = "stock.csv";
-    final static Path dbPath = Paths.get(DBFileName);
+    public static final String DBFILENAME = "stock.csv";
+    final static Path dbPath = Paths.get(DBFILENAME);
 
-    public static final String secretFileName = "secret.txt";
-    final static Path secretPath = Paths.get(secretFileName);
+    public static final String SECRETFILENAME = "secret.txt";
+    final static Path secretPath = Paths.get(SECRETFILENAME);
 
     public static String[] returnAll() {
         List<String> data = null;
@@ -39,7 +38,10 @@ public class DB {
         return container;
     }
 
-    // This is for testing purpose only, not use in production
+    /**
+     *This is for testing purpose only, not use in production
+     * @return Header is return in Object[]
+     */
     public static Object[] returnSplitedHeader() {
         String[] data = returnAll();
         List<String> head = null;
@@ -52,7 +54,7 @@ public class DB {
 
     public static ArrayList<String> returnAllPicUrl() {
         @SuppressWarnings("unchecked")
-        ArrayList<String> picUrl = new ArrayList<String>();
+        ArrayList<String> picUrl = new ArrayList<>();
         String[] data = returnAll();
         for (int i = 1; i < data.length; i++) {
             // Spilit the data by ,
@@ -101,12 +103,16 @@ public class DB {
         return stock;
     }
 
-    // This is for testing purpose only, not use in production
+    /**
+     *This is for testing purpose only, not use in production
+     */
     public static void echoAll() {
         System.out.println(Arrays.toString(returnAll()) + "\n");
     }
 
-    // This is for testing purpose only, not use in production
+     /**
+     *This is for testing purpose only, not use in production
+     */
     public static void echoSplited() {
         String[] data = returnAll();
         Object[] header = returnSplitedHeader();
@@ -128,7 +134,9 @@ public class DB {
         }
     }
 
-    // This is for testing purpose only, not use in production
+    /**
+     *This is for testing purpose only, not use in production
+     */
     public static void addLine() {
         // TODO :
         // No Negative number for price, stock
@@ -154,6 +162,11 @@ public class DB {
 
     }
 
+    /**
+     *
+     * @param id Stock ID (String)
+     * @return
+     */
     public static ArrayList<String> getAllStockByID(String id) {
         String[] data = returnAll();
         @SuppressWarnings("unchecked")
@@ -193,6 +206,11 @@ public class DB {
         return stockName;
     }
 
+    /**
+     *
+     * @param id Stock ID (String)
+     * @return
+     */
     public static String getStockPriceByID(String id) {
         String price = null;
         String[] data = returnAll();
@@ -210,6 +228,11 @@ public class DB {
         return price;
     }
 
+    /**
+     *
+     * @param id Stock ID (String)
+     * @return
+     */
     public static String getStockByID(String id) {
         String stock = null;
         String[] data = returnAll();
@@ -227,6 +250,11 @@ public class DB {
         return stock;
     }
 
+    /**
+     *
+     * @param id Stock ID (String)
+     * @return
+     */
     public static String getStockAvailabilityByID(String id) {
         String availability = null;
         String[] data = returnAll();
@@ -244,6 +272,11 @@ public class DB {
         return availability;
     }
 
+    /**
+     *
+     * @param id Stock ID (String)
+     * @return
+     */
     public static String getStockImageByID(String id) {
         String img = null;
         String[] data = returnAll();
@@ -261,7 +294,11 @@ public class DB {
         return img;
     }
 
-    public static int reduceStock(String id) {
+    /**
+     *
+     * @param id Stock ID (String)
+     */
+    public static void reduceStock(String id) {
         String[] data = returnAll();
         int idd = Integer.valueOf(id);
         String line = data[idd];
@@ -277,10 +314,15 @@ public class DB {
             info += data[i] + "\n";
         }
 
-        int status = deleteAndWriteAgain(info);
-        return status;
+        deleteAndWriteAgain(info);
+        
     }
 
+    /**
+     *
+     * @param data data that you want to write to the DB text, make sure the data is well formatted
+     * @return Status that of write the file, 0 is success and 1 is failed
+     */
     public static int deleteAndWriteAgain(String data) {
         int status = 0;
         try {
@@ -293,6 +335,12 @@ public class DB {
         return status;
     }
 
+    /**
+     *
+     * @param inputBytes the original password that you want to fin the hashed value
+     * @param algorithm the algorithm that you want to find (Default is SHA-256) in this assignment class
+     * @return
+     */
     public static String getHash(byte[] inputBytes, String algorithm) {
         String hashValue = "";
         try {
@@ -306,6 +354,11 @@ public class DB {
         return hashValue;
     }
 
+    /**
+     *
+     * @param password the password to opening the admin panel 
+     * @return
+     */
     public static int updatePassword(String password) {
         String algorithm = "SHA-256";
         String hashValue = getHash(password.getBytes(), algorithm);

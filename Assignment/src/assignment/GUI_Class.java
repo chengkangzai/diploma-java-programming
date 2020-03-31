@@ -10,36 +10,20 @@ import javax.swing.JPasswordField;
 
 public class GUI_Class  {
 
-    public static void showConfirmDialog(String s) {
-        final JFrame parent = new JFrame();
-        parent.setVisible(true);
-
-        // JOptionPane.showInputDialog(parent, "What is your name?", null);
-        final int showConfirmDialog = JOptionPane.showConfirmDialog(parent, s);
-        switch (showConfirmDialog) {
-            case 0:
-                JOptionPane.showMessageDialog(parent, "Yes is return");
-                break;
-
-            case 1:
-                JOptionPane.showMessageDialog(parent, "No is return");
-                break;
-
-            case 2:
-                JOptionPane.showMessageDialog(parent, "Cancel is return");
-                break;
-
-        }
-        parent.setVisible(false);
-    }
-
+    /**
+     *
+     * @param message the message that you want to show up in the message box
+     */
     public static void showMessageBox(String message) {
         final JFrame parent = new JFrame();
         parent.setVisible(true);
-        JOptionPane.showMessageDialog(parent, message, "Pop Up 1", 1);
+        JOptionPane.showMessageDialog(parent, message, "Pop Up ", 1);
         parent.setVisible(false);
     }
 
+    /**
+     * say thanks to the customer !
+     */
     public static void sayThanks() {
         final JFrame parent = new JFrame();
         parent.setVisible(true);
@@ -47,6 +31,9 @@ public class GUI_Class  {
         parent.setVisible(false);
     }
 
+    /**
+     * Ask the customer really want to exit ?
+     */
     public static void exitSoftware() {
         final JFrame parent = new JFrame();
         final int showConfirmDialog = JOptionPane.showConfirmDialog(parent, "Are you sure you want to exit ?", "Exit Confirmation", 1);
@@ -70,6 +57,10 @@ public class GUI_Class  {
 
     }
 
+    /**
+     * Show the password box (In this assignment is used for open admin panel)
+     * @return password in char array will be returned
+     */
     public static char[] showPasswordBox() {
         JPanel panel = new JPanel();
         JLabel label = new JLabel("Enter a password:");
@@ -84,6 +75,11 @@ public class GUI_Class  {
         return password;
     }
 
+    /**
+     *
+     * @param password the password of input
+     * @return status of the matching or not, 0 is not and 1 is matching
+     */
     public static int passwordMatching(String password) {
         String oriPassword =DB.returnPassword();
         String hashInput = DB.getHash(password.getBytes(), "SHA-256");
@@ -94,6 +90,9 @@ public class GUI_Class  {
         return status;
     }
 
+    /**
+     *Open the GUI Jframe
+     */
     public static void showGUI() {
         GuiLog gl =new GuiLog(0,"GUI");
         gl.log();
@@ -102,6 +101,9 @@ public class GUI_Class  {
         
     }
 
+    /**
+     * open admin Panel 
+     */
     public static void showAdminPanel() {
         GuiLog gl = new GuiLog(0,"Admin Panel");
         gl.log();

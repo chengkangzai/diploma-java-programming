@@ -13,23 +13,26 @@
         },
         {
             "type": "java",
-            "name": "Debug (Launch) - Current File",
+            "name": "CodeLens (Launch) - TehTarik",
             "request": "launch",
-            "mainClass": "${file}"
-        },
-        {
-            "type": "java",
-            "name": "Debug (Launch)-UserList<NetBeansProjects_8b819c96>",
-            "request": "launch",
-            "mainClass": "GUI.UserList",
+            "mainClass": "domain.TehTarik",
             "projectName": "NetBeansProjects_8b819c96"
         },
         {
             "type": "java",
-            "name": "Debug (Launch)-Tutorial8<NetBeansProjects_8b819c96>",
+            "name": "CodeLens (Launch) - Pepsi",
             "request": "launch",
-            "mainClass": "tutorial8.Tutorial8",
+            "mainClass": "domain.Pepsi",
+            "projectName": "NetBeansProjects_8b819c96"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - MainTester",
+            "request": "launch",
+            "mainClass": "domain.MainTester",
             "projectName": "NetBeansProjects_8b819c96"
         }
-    ]
+    ],
+
+      
 }
