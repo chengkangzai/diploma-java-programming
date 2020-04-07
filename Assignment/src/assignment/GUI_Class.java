@@ -1,6 +1,7 @@
 package assignment;
 
 import MyLogger.GuiLog;
+import MyLogger.MyLogger;
 import MyLogger.ProgramLog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -8,7 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 
-public class GUI_Class  {
+public class GUI_Class {
 
     /**
      *
@@ -18,6 +19,13 @@ public class GUI_Class  {
         final JFrame parent = new JFrame();
         parent.setVisible(true);
         JOptionPane.showMessageDialog(parent, message, "Pop Up ", 1);
+        parent.setVisible(false);
+    }
+
+    public static void showWarningBox(String message) {
+        final JFrame parent = new JFrame();
+        parent.setVisible(true);
+        JOptionPane.showMessageDialog(parent, message, "Pop Up ", 0);
         parent.setVisible(false);
     }
 
@@ -37,7 +45,7 @@ public class GUI_Class  {
     public static void exitSoftware() {
         final JFrame parent = new JFrame();
         final int showConfirmDialog = JOptionPane.showConfirmDialog(parent, "Are you sure you want to exit ?", "Exit Confirmation", 1);
-        
+
         switch (showConfirmDialog) {
             case 0:
                 ProgramLog pl = new ProgramLog(1);
@@ -59,6 +67,7 @@ public class GUI_Class  {
 
     /**
      * Show the password box (In this assignment is used for open admin panel)
+     *
      * @return password in char array will be returned
      */
     public static char[] showPasswordBox() {
@@ -67,7 +76,7 @@ public class GUI_Class  {
         JPasswordField pass = new JPasswordField(10);
         panel.add(label);
         panel.add(pass);
-        String[] options = new String[] { "OK", "Cancel" };
+        String[] options = new String[]{"OK", "Cancel"};
         int option = JOptionPane.showOptionDialog(null, panel, "Password", JOptionPane.NO_OPTION,
                 JOptionPane.PLAIN_MESSAGE, null, options, options[1]);
 
@@ -81,31 +90,38 @@ public class GUI_Class  {
      * @return status of the matching or not, 0 is not and 1 is matching
      */
     public static int passwordMatching(String password) {
-        String oriPassword =DB.returnPassword();
+        String oriPassword = DB.returnPassword();
         String hashInput = DB.getHash(password.getBytes(), "SHA-256");
         int status = 0;
         if (oriPassword.equals(hashInput)) {
-            status =1;
+            status = 1;
+        } else {
+            MyLogger ml = new MyLogger();
+            ml.setHead("WARNING");
+            ml.addHeadIndent(1);
+            ml.setBody("Admin Panel was attempt to open but failed to match password");
+            ml.log();
         }
+
         return status;
     }
 
     /**
-     *Open the GUI Jframe
+     * Open the GUI Jframe
      */
     public static void showGUI() {
-        GuiLog gl =new GuiLog(0,"GUI");
+        GuiLog gl = new GuiLog(0, "GUI");
         gl.log();
         GUI gui = new GUI();
         gui.setVisible(true);
-        
+
     }
 
     /**
-     * open admin Panel 
+     * open admin Panel
      */
     public static void showAdminPanel() {
-        GuiLog gl = new GuiLog(0,"Admin Panel");
+        GuiLog gl = new GuiLog(0, "Admin Panel");
         gl.log();
         adminPanel adminPL = new adminPanel();
         adminPL.setVisible(true);
