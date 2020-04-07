@@ -13,15 +13,19 @@ import java.time.format.DateTimeFormatter;
  * Logger
  */
 public class MyLogger {
-    protected static final String LoggerFileName = "log.txt";
-    protected static final Path loggerPath = Paths.get(LoggerFileName);
+    protected static final String LOGGERFILENAME = "log.txt";
+    protected static final Path LOGGERPATH = Paths.get(LOGGERFILENAME);
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
-    protected final String time = LocalDateTime.now().atZone(ZoneId.systemDefault()).format(formatter).toString();
+    protected final String TIME = LocalDateTime.now().atZone(ZoneId.systemDefault()).format(formatter);
     protected int status = 0;
     protected String body;
     protected String head;
     protected String line;
 
+    /**
+     *
+     * @param head String of head, will add bracket automatically
+     */
     public void setHead(String head) {
         this.head = "[" + head + "]";
     }
@@ -30,6 +34,10 @@ public class MyLogger {
         return head;
     }
 
+    /**
+     *
+     * @param num How many indent you want to put ? Warning is 1 , other is 2
+     */
     public void addHeadIndent(int num) {
         if (num == 1) {
             head += "\t";
@@ -38,6 +46,10 @@ public class MyLogger {
         }
     }
 
+    /**
+     *
+     * @param body What is the body of the log ?
+     */
     public void setBody(String body) {
         this.body = body;
     }
@@ -46,14 +58,17 @@ public class MyLogger {
         return body;
     }
 
-    protected void getLine() {
-        line = head + " - " + "[" + time + "]" + " - " + body + "\n";
+    protected void combineLine() {
+        line = head + " - " + "[" + TIME + "]" + " - " + body + "\n";
     }
 
+    /**
+     * Log the information
+     */
     public void log() {
-        getLine();
+        combineLine();
         try {
-            Files.write(loggerPath, line.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            Files.write(LOGGERPATH, line.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
             status = 1;
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
