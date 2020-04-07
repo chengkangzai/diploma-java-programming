@@ -99,7 +99,7 @@ public class GUI_Class {
             MyLogger ml = new MyLogger();
             ml.setHead("WARNING");
             ml.addHeadIndent(1);
-            ml.setBody("Admin Panel was attempt to open but failed to match password");
+            ml.setBody("Admin Panel was attempted to open but failed to match password");
             ml.log();
         }
 
