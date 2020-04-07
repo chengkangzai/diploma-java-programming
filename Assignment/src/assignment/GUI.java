@@ -13,7 +13,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-
 /**
  *
  * @author ASUS
@@ -25,6 +24,7 @@ public final class GUI extends javax.swing.JFrame {
      */
     private static final long serialVersionUID = 1L;
 
+    //Set Everything to Array List
     private void Grouping() {
         setBuyBtnToArrayList();
         setPicToArrayList();
@@ -32,6 +32,7 @@ public final class GUI extends javax.swing.JFrame {
         setStockPriceToArrayList();
     }
 
+    //Populate everything
     private void initializer() {
         setStockImageIcon();
         setStockName();
@@ -473,7 +474,8 @@ public final class GUI extends javax.swing.JFrame {
     private void btnGoAdminActionPerformed(java.awt.event.ActionEvent evt) {
         // If password is default (password) -- easier for assignment marker
         if (GUI_Class.passwordMatching("password") == 1) {
-            GUI_Class.showMessageBox("Default Password detected ! Default Password : password");
+
+            GUI_Class.showWarningBox("Default Password detected ! Default Password : password");
         }
         // Get password from the password field
         char[] password = GUI_Class.showPasswordBox();
@@ -484,7 +486,7 @@ public final class GUI extends javax.swing.JFrame {
             dispose();
         } else {
             // Password do not match
-            GUI_Class.showMessageBox("The password is wrong ! Please try again.");
+            GUI_Class.showWarningBox("The password is wrong ! Please try again.");
         }
     }
 
@@ -630,8 +632,6 @@ public final class GUI extends javax.swing.JFrame {
                 PurchaseLog pl = new PurchaseLog(String.valueOf(selectedID));
                 pl.log();
                 GUI_Class.sayThanks();
-                resetCounter();
-                enableAllBuyBtn();
                 GUI gui = new GUI();
                 gui.setVisible(true);
                 dispose();
@@ -664,15 +664,11 @@ public final class GUI extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        // </editor-fold>
+
         // </editor-fold>
 
         /* Create and display the form */
