@@ -1,5 +1,6 @@
 package assignment;
 
+import MyLogger.MyLogger;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -367,6 +368,11 @@ public class DB {
         try {
             Files.write(secretPath, hashValue.getBytes(), StandardOpenOption.TRUNCATE_EXISTING,
                     StandardOpenOption.CREATE);
+            MyLogger ml = new MyLogger();
+            ml.setHead("WARNING");
+            ml.addHeadIndent(1);
+            ml.setBody("Password was changed");
+            ml.log();
         } catch (IOException ex) {
             Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
             status = 1;
