@@ -55,35 +55,48 @@ public class adminPanel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         StockTable = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
         btnUpdatePassword = new javax.swing.JButton();
+        btnHelp = new javax.swing.JButton();
         btnGoBack = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
         updateBtn = new javax.swing.JButton();
         bg = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Admin Panel for Vending mAchineeee");
         setLocationByPlatform(true);
         setMinimumSize(new java.awt.Dimension(1180, 670));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        StockTable.setModel(new javax.swing.table.DefaultTableModel(new Object[][] {
+        StockTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        }, new String[] { "ID", "Name", "Price", "Stock", "AVAILABILITY(T/F)", "Img Path" }) {
-            boolean[] canEdit = new boolean[] { false, true, true, true, true, true };
+            },
+            new String [] {
+                "ID", "Name", "Price", "Stock", "AVAILABILITY(T/F)", "Img Path"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true, true
+            };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
+                return canEdit [columnIndex];
             }
         });
         jScrollPane1.setViewportView(StockTable);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 1000, 320));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 1000, 320));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setText("Current Stock Information");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, -1, -1));
 
         btnUpdatePassword.setText("Update  Password");
         btnUpdatePassword.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +104,15 @@ public class adminPanel extends javax.swing.JFrame {
                 btnUpdatePasswordActionPerformed(evt);
             }
         });
-        getContentPane().add(btnUpdatePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 350, 150, 50));
+        getContentPane().add(btnUpdatePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 390, 150, 50));
+
+        btnHelp.setText("Help");
+        btnHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHelpActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnHelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 200, 100, 50));
 
         btnGoBack.setText("Go Back");
         btnGoBack.addActionListener(new java.awt.event.ActionListener() {
@@ -99,7 +120,7 @@ public class adminPanel extends javax.swing.JFrame {
                 btnGoBackActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGoBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 80, 100, 50));
+        getContentPane().add(btnGoBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 130, 100, 50));
 
         btnExit.setText("Exit");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
@@ -107,7 +128,7 @@ public class adminPanel extends javax.swing.JFrame {
                 btnExitActionPerformed(evt);
             }
         });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 20, 100, 50));
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 60, 100, 50));
 
         updateBtn.setText("Update");
         updateBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +136,7 @@ public class adminPanel extends javax.swing.JFrame {
                 updateBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(updateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 100, 47));
+        getContentPane().add(updateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 100, 47));
 
         bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assignment/asset/pic/temp/bg.jpg"))); // NOI18N
         bg.setText("jLabel1");
@@ -123,6 +144,11 @@ public class adminPanel extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpActionPerformed
+        GUI_Class.showMessageBox("How to update the stock\n\n 1. select the row where the slot need update \n 2. Double click the field that need update. \n 3. Single Click outside of the row. \n 4. Click \"Update\"Button. ");
+        GUI_Class.showMessageBox("How to change the password\n\n 1. Click the \"Update Password Button\" \n 2. Type in the new password and hit enter. \n\n ***** We strongly encourage you change the default password. *****");
+    }//GEN-LAST:event_btnHelpActionPerformed
 
     private void btnUpdatePasswordActionPerformed(java.awt.event.ActionEvent evt) {
         char[] password = GUI_Class.showPasswordBox();
@@ -167,7 +193,7 @@ public class adminPanel extends javax.swing.JFrame {
         int status = DB.deleteAndWriteAgain(data);
         if (status == 0) {
             loggingStock();
-            GUI_Class.showMessageBox("success!");
+            GUI_Class.showMessageBox("Successfully Update the database !!");
         } else {
             GUI_Class.showMessageBox("Something Wrong is happening ");
         }
@@ -196,19 +222,12 @@ public class adminPanel extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(adminPanel.class.getName()).log(java.util.logging.Level.SEVERE, null,
-                    ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(adminPanel.class.getName()).log(java.util.logging.Level.SEVERE, null,
-                    ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(adminPanel.class.getName()).log(java.util.logging.Level.SEVERE, null,
-                    ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(adminPanel.class.getName()).log(java.util.logging.Level.SEVERE, null,
                     ex);
         }
+        // </editor-fold>
+        
         // </editor-fold>
 
         /* Create and display the form */
@@ -224,7 +243,9 @@ public class adminPanel extends javax.swing.JFrame {
     private javax.swing.JLabel bg;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnGoBack;
+    private javax.swing.JButton btnHelp;
     private javax.swing.JButton btnUpdatePassword;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
