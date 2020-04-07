@@ -1,7 +1,5 @@
 package MyLogger;
 
-import sun.net.www.content.text.plain;
-
 /**
  * GuiLog
  */
