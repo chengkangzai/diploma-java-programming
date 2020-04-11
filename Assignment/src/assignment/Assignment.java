@@ -10,12 +10,8 @@ import MyLogger.ProgramLog;
 public class Assignment {
 
     public static void main(String[] args) {
-        ProgramLog pl = new ProgramLog(0);
-        pl.log();
-
-        GUI gui = new GUI();
-        gui.setVisible(true);
-
+        new ProgramLog(0).log();
+        new GUI().setVisible(true);
 
         // 1. Define UI Class --> GUI
         // 2. Calculation Logic with proper method --> Stock
