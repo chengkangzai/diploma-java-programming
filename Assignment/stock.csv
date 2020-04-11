@@ -1,8 +1,8 @@
 ID,NAME,PRICE,IN-STOCK,AVAILABILITY(T/F),IMAGE
 1,Coca-Cola,2,10,T,src/assignment/asset/pic/8.jpg
-2,Pepsi,2.5,8,T,src/assignment/asset/pic/7.jpg
+2,Pepsi,2.50,8,T,src/assignment/asset/pic/7.jpg
 3,Mineral,1,9,T,src/assignment/asset/pic/1.jpg
-4,Ah Huat White Coffee,2,10,T,src/assignment/asset/pic/2.jpg
+4,Ah Huat White Coffee,2,7,T,src/assignment/asset/pic/2.jpg
 5,F&N Soy Bean,2,0,T,src/assignment/asset/pic/3.jpg
 6,Nescafe Coffee,2,10,T,src/assignment/asset/pic/4.jpg
 7,Lipton Ice Tea,2,10,T,src/assignment/asset/pic/5.jpg

@@ -22,10 +22,6 @@ public class MyLogger {
     protected String head;
     protected String line;
 
-    /**
-     *
-     * @param head String of head, will add bracket automatically
-     */
     public void setHead(String head) {
         this.head = "[" + head + "]";
     }
@@ -34,10 +30,6 @@ public class MyLogger {
         return head;
     }
 
-    /**
-     *
-     * @param num How many indent you want to put ? Warning is 1 , other is 2
-     */
     public void addHeadIndent(int num) {
         if (num == 1) {
             head += "\t";
@@ -46,10 +38,6 @@ public class MyLogger {
         }
     }
 
-    /**
-     *
-     * @param body What is the body of the log ?
-     */
     public void setBody(String body) {
         this.body = body;
     }
@@ -62,9 +50,6 @@ public class MyLogger {
         line = head + " - " + "[" + TIME + "]" + " - " + body + "\n";
     }
 
-    /**
-     * Log the information
-     */
     public void log() {
         combineLine();
         try {
@@ -74,5 +59,4 @@ public class MyLogger {
             System.out.println(ex.getMessage());
         }
     }
-
 }

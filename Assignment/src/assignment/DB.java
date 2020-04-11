@@ -19,18 +19,17 @@ import javax.xml.bind.DatatypeConverter;
 
 public class DB {
 
-    public static final String DBFILENAME = "stock.csv";
-    final static Path dbPath = Paths.get(DBFILENAME);
+    private static final String DBFILENAME = "stock.csv";
+    private static final Path dbPath = Paths.get(DBFILENAME);
 
-    public static final String SECRETFILENAME = "secret.txt";
-    final static Path secretPath = Paths.get(SECRETFILENAME);
+    private static final String SECRETFILENAME = "secret.txt";
+    private static final Path secretPath = Paths.get(SECRETFILENAME);
 
     public static String[] returnAll() {
         List<String> data = null;
         try {
             data = Files.readAllLines(dbPath);
         } catch (IOException ex) {
-            System.out.println("Error!");
             System.out.println(ex.getMessage());
         }
         // populate the data from list into String[]
@@ -40,7 +39,8 @@ public class DB {
     }
 
     /**
-     *This is for testing purpose only, not use in production
+     * This is for testing purpose only, not use in production
+     * 
      * @return Header is return in Object[]
      */
     public static Object[] returnSplitedHeader() {
@@ -54,7 +54,6 @@ public class DB {
     }
 
     public static ArrayList<String> returnAllPicUrl() {
-        @SuppressWarnings("unchecked")
         ArrayList<String> picUrl = new ArrayList<>();
         String[] data = returnAll();
         for (int i = 1; i < data.length; i++) {
@@ -69,8 +68,7 @@ public class DB {
     }
 
     public static ArrayList<String> returnAllStockName() {
-        @SuppressWarnings("unchecked")
-        ArrayList<String> stockName = new ArrayList<String>();
+        ArrayList<String> stockName = new ArrayList<>();
         for (int i = 1; i < DB.returnAll().length; i++) {
             String id = String.valueOf(i);
             String e = getStockNameByID(id);
@@ -80,8 +78,7 @@ public class DB {
     }
 
     public static ArrayList<String> returnAllStockPrice() {
-        @SuppressWarnings("unchecked")
-        ArrayList<String> stockPrice = new ArrayList<String>();
+        ArrayList<String> stockPrice = new ArrayList<>();
         for (int i = 1; i < DB.returnAll().length; i++) {
             String id = String.valueOf(i);
             String e = getStockPriceByID(id);
@@ -94,8 +91,7 @@ public class DB {
     }
 
     public static ArrayList<String> returnAllStock() {
-        @SuppressWarnings("unchecked")
-        ArrayList<String> stock = new ArrayList<String>();
+        ArrayList<String> stock = new ArrayList<>();
         for (int i = 1; i < DB.returnAll().length; i++) {
             String id = String.valueOf(i);
             String e = getStockByID(id);
@@ -105,14 +101,14 @@ public class DB {
     }
 
     /**
-     *This is for testing purpose only, not use in production
+     * This is for testing purpose only, not use in production
      */
     public static void echoAll() {
         System.out.println(Arrays.toString(returnAll()) + "\n");
     }
 
-     /**
-     *This is for testing purpose only, not use in production
+    /**
+     * This is for testing purpose only, not use in production
      */
     public static void echoSplited() {
         String[] data = returnAll();
@@ -136,7 +132,7 @@ public class DB {
     }
 
     /**
-     *This is for testing purpose only, not use in production
+     * This is for testing purpose only, not use in production
      */
     public static void addLine() {
         // TODO :
@@ -163,38 +159,11 @@ public class DB {
 
     }
 
-    /**
-     *
-     * @param id Stock ID (String)
-     * @return
-     */
-    public static ArrayList<String> getAllStockByID(String id) {
-        String[] data = returnAll();
-        @SuppressWarnings("unchecked")
-        ArrayList<String> s = new ArrayList<String>();
-        for (int i = 1; i < data.length; i++) {
-            // Spilit the data by ,
-            String[] split = data[i].split("\\,");
-            for (int j = 1; j < 2; j++) {
-                // Get ID only
-                if (id.equals(split[j])) {
-                    System.out.println("Gotcha");
-                    String stockName = split[j + 1];
-                    String stockPrice = split[j + 2];
-                    String stockStock = split[j + 3];
-                    String stockAvail = split[j + 4];
-                }
-            }
-        }
-        return s;
-        // find the line with appriate id
-    }
+    
 
     public static String getStockNameByID(String id) {
         String stockName = null;
         String[] data = returnAll();
-        @SuppressWarnings("unchecked")
-        ArrayList<String> s = new ArrayList<String>();
         for (int i = 1; i < data.length; i++) {
             // Spilit the data by ,
             String[] split = data[i].split("\\,");
@@ -215,8 +184,6 @@ public class DB {
     public static String getStockPriceByID(String id) {
         String price = null;
         String[] data = returnAll();
-        @SuppressWarnings("unchecked")
-        ArrayList<String> s = new ArrayList<String>();
         for (int i = 1; i < data.length; i++) {
             // Spilit the data by ,
             String[] split = data[i].split("\\,");
@@ -237,8 +204,6 @@ public class DB {
     public static String getStockByID(String id) {
         String stock = null;
         String[] data = returnAll();
-        @SuppressWarnings("unchecked")
-        ArrayList<String> s = new ArrayList<String>();
         for (int i = 1; i < data.length; i++) {
             // Spilit the data by ,
             String[] split = data[i].split("\\,");
@@ -259,8 +224,6 @@ public class DB {
     public static String getStockAvailabilityByID(String id) {
         String availability = null;
         String[] data = returnAll();
-        @SuppressWarnings("unchecked")
-        ArrayList<String> s = new ArrayList<String>();
         for (int i = 1; i < data.length; i++) {
             // Spilit the data by ,
             String[] split = data[i].split("\\,");
@@ -281,8 +244,6 @@ public class DB {
     public static String getStockImageByID(String id) {
         String img = null;
         String[] data = returnAll();
-        @SuppressWarnings("unchecked")
-        ArrayList<String> s = new ArrayList<String>();
         for (int i = 1; i < data.length; i++) {
             // Spilit the data by ,
             String[] split = data[i].split("\\,");
@@ -316,12 +277,13 @@ public class DB {
         }
 
         deleteAndWriteAgain(info);
-        
+
     }
 
     /**
      *
-     * @param data data that you want to write to the DB text, make sure the data is well formatted
+     * @param data data that you want to write to the DB text, make sure the data is
+     *             well formatted
      * @return Status that of write the file, 0 is success and 1 is failed
      */
     public static int deleteAndWriteAgain(String data) {
@@ -339,7 +301,8 @@ public class DB {
     /**
      *
      * @param inputBytes the original password that you want to fin the hashed value
-     * @param algorithm the algorithm that you want to find (Default is SHA-256) in this assignment class
+     * @param algorithm  the algorithm that you want to find (Default is SHA-256) in
+     *                   this assignment class
      * @return
      */
     public static String getHash(byte[] inputBytes, String algorithm) {
@@ -357,7 +320,7 @@ public class DB {
 
     /**
      *
-     * @param password the password to opening the admin panel 
+     * @param password the password to opening the admin panel
      * @return
      */
     public static int updatePassword(String password) {

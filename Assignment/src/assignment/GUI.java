@@ -1,11 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package assignment;
 
-import MyLogger.PurchaseLog;
+import MyLogger.MyLogger;
+import MyLogger.StockLog;
+import assignment.GUI_Class;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -487,6 +485,11 @@ public final class GUI extends javax.swing.JFrame {
         } else {
             // Password do not match
             GUI_Class.showWarningBox("The password is wrong ! Please try again.");
+            MyLogger ml = new MyLogger();
+            ml.setHead("WARNING");
+            ml.addHeadIndent(1);
+            ml.setBody("Admin Panel was attempted to open but failed to match password");
+            ml.log();
         }
     }
 
@@ -600,7 +603,6 @@ public final class GUI extends javax.swing.JFrame {
             }
             updateTotalRemaining();
         }
-
     }
 
     private void updateTotalRemaining() {
@@ -629,11 +631,9 @@ public final class GUI extends javax.swing.JFrame {
                 // Remaining is equal to 0
                 // Set Check out
                 DB.reduceStock(String.valueOf(selectedID));
-                PurchaseLog pl = new PurchaseLog(String.valueOf(selectedID));
-                pl.log();
+                new StockLog(String.valueOf(selectedID),"Purchase").log();
                 GUI_Class.sayThanks();
-                GUI gui = new GUI();
-                gui.setVisible(true);
+                GUI_Class.showGUI();
                 dispose();
             }
         }

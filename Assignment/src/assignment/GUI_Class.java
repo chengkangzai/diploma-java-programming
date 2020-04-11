@@ -44,12 +44,12 @@ public class GUI_Class {
      */
     public static void exitSoftware() {
         final JFrame parent = new JFrame();
-        final int showConfirmDialog = JOptionPane.showConfirmDialog(parent, "Are you sure you want to exit ?", "Exit Confirmation", 1);
+        final int showConfirmDialog = JOptionPane.showConfirmDialog(parent, "Are you sure you want to exit ?",
+                "Exit Confirmation", 1);
 
         switch (showConfirmDialog) {
             case 0:
-                ProgramLog pl = new ProgramLog(1);
-                pl.log();
+                new ProgramLog(1).log();
                 System.exit(0);
                 break;
 
@@ -76,7 +76,7 @@ public class GUI_Class {
         JPasswordField pass = new JPasswordField(10);
         panel.add(label);
         panel.add(pass);
-        String[] options = new String[]{"OK", "Cancel"};
+        String[] options = new String[] { "OK", "Cancel" };
         int option = JOptionPane.showOptionDialog(null, panel, "Password", JOptionPane.NO_OPTION,
                 JOptionPane.PLAIN_MESSAGE, null, options, options[1]);
 
@@ -95,14 +95,7 @@ public class GUI_Class {
         int status = 0;
         if (oriPassword.equals(hashInput)) {
             status = 1;
-        } else {
-            MyLogger ml = new MyLogger();
-            ml.setHead("WARNING");
-            ml.addHeadIndent(1);
-            ml.setBody("Admin Panel was attempted to open but failed to match password");
-            ml.log();
         }
-
         return status;
     }
 
@@ -110,10 +103,8 @@ public class GUI_Class {
      * Open the GUI Jframe
      */
     public static void showGUI() {
-        GuiLog gl = new GuiLog(0, "GUI");
-        gl.log();
-        GUI gui = new GUI();
-        gui.setVisible(true);
+        new GuiLog(0, "GUI").log();
+        new GUI().setVisible(true);
 
     }
 
@@ -121,9 +112,7 @@ public class GUI_Class {
      * open admin Panel
      */
     public static void showAdminPanel() {
-        GuiLog gl = new GuiLog(0, "Admin Panel");
-        gl.log();
-        adminPanel adminPL = new adminPanel();
-        adminPL.setVisible(true);
+        new GuiLog(0, "Admin Panel").log();
+        new adminPanel().setVisible(true);
     }
 }
