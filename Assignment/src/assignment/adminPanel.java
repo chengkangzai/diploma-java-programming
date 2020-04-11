@@ -1,18 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package assignment;
 
-import MyLogger.PurchaseLog;
+import MyLogger.StockLog;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
-
 
 /**
  *
@@ -55,7 +49,8 @@ public class adminPanel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -74,20 +69,13 @@ public class adminPanel extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        StockTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        StockTable.setModel(new javax.swing.table.DefaultTableModel(new Object[][] {
 
-            },
-            new String [] {
-                "ID", "Name", "Price", "Stock", "AVAILABILITY(T/F)", "Img Path"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, true
-            };
+        }, new String[] { "ID", "Name", "Price", "Stock", "AVAILABILITY(T/F)", "Img Path" }) {
+            boolean[] canEdit = new boolean[] { false, true, true, true, true, true };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         jScrollPane1.setViewportView(StockTable);
@@ -145,10 +133,13 @@ public class adminPanel extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpActionPerformed
-        GUI_Class.showMessageBox("How to update the stock\n\n 1. select the row where the slot need update \n 2. Double click the field that need update. \n 3. Single Click outside of the row. \n 4. Click \"Update\"Button. ");
-        GUI_Class.showMessageBox("How to change the password\n\n 1. Click the \"Update Password Button\" \n 2. Type in the new password and hit enter. \n\n ***** We strongly encourage you change the default password. *****");
-    }//GEN-LAST:event_btnHelpActionPerformed
+    private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {
+        
+        GUI_Class.showMessageBox(
+                "How to update the stock\n\n 1. select the row where the slot need update \n 2. Double click the field that need update. \n 3. Single Click outside of the row. \n 4. Click \"Update\"Button. ");
+        GUI_Class.showMessageBox(
+                "How to change the password\n\n 1. Click the \"Update Password Button\" \n 2. Type in the new password and hit enter. \n\n ***** We strongly encourage you change the default password. *****");
+    }
 
     private void btnUpdatePasswordActionPerformed(java.awt.event.ActionEvent evt) {
         char[] password = GUI_Class.showPasswordBox();
@@ -167,8 +158,7 @@ public class adminPanel extends javax.swing.JFrame {
     private void loggingStock() {
         for (int i = 0; i < model.getRowCount(); i++) {
             String data = model.getValueAt(i, 0).toString();
-            PurchaseLog pl = new PurchaseLog(data);
-            pl.log();
+            new StockLog(data,"Restock").log();        
         }
     }
 
@@ -222,12 +212,13 @@ public class adminPanel extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+                | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(adminPanel.class.getName()).log(java.util.logging.Level.SEVERE, null,
                     ex);
         }
         // </editor-fold>
-        
+
         // </editor-fold>
 
         /* Create and display the form */
