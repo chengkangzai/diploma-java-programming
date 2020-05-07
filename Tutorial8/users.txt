@@ -1,4 +1,0 @@
-ID|FNAME|LNAME|EMAIL|USERNAME|PASSWORD
-1|Muhammad|Ali|ali@mail.apu.edu.my|alimd|123456
-2|Mary|Helen|mary@mail.apu.edu.my|mary12|654321
-3|Mike|Johnson|mike@mail.apu.edu.my|mick90|989890

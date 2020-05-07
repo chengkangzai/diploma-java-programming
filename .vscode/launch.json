@@ -1,38 +1,11 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
     "configurations": [
         {
             "type": "java",
-            "name": "CodeLens (Launch) - Assignment",
+            "name": "CodeLens (Launch) - App",
             "request": "launch",
-            "mainClass": "Assignment",
-            "projectName": "NetBeansProjects_8b819c96"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - TehTarik",
-            "request": "launch",
-            "mainClass": "domain.TehTarik",
-            "projectName": "NetBeansProjects_8b819c96"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Pepsi",
-            "request": "launch",
-            "mainClass": "domain.Pepsi",
-            "projectName": "NetBeansProjects_8b819c96"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - MainTester",
-            "request": "launch",
-            "mainClass": "domain.MainTester",
+            "mainClass": "App",
             "projectName": "NetBeansProjects_8b819c96"
         }
-    ],
-
-      
+    ]
 }
