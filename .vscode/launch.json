@@ -2,9 +2,30 @@
     "configurations": [
         {
             "type": "java",
-            "name": "CodeLens (Launch) - App",
+            "name": "CodeLens (Launch) - Calc",
             "request": "launch",
-            "mainClass": "App",
+            "mainClass": "sudoku.Calc",
+            "projectName": "NetBeansProjects_8b819c96"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Sudoku",
+            "request": "launch",
+            "mainClass": "sudoku.Sudoku",
+            "projectName": "NetBeansProjects_8b819c96"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - DB",
+            "request": "launch",
+            "mainClass": "sudoku.DB",
+            "projectName": "NetBeansProjects_8b819c96"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
+            "mainClass": "sudoku.Main",
             "projectName": "NetBeansProjects_8b819c96"
         }
     ]
