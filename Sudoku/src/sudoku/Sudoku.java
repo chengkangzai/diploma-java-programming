@@ -5,9 +5,6 @@
  */
 package sudoku;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -22,8 +19,8 @@ public class Sudoku {
             { 0, 0, 1, 9, 0, 4, 5, 7, 0 } };
 
     private static int[][] BOARD;
-    public static int EMPTY = 0;
-    public static int SIZE = 9;
+    private static int EMPTY = 0;
+    private static int SIZE = 9;
 
     public Sudoku(int[][] board) {
         Sudoku.BOARD = board;
@@ -136,8 +133,6 @@ public class Sudoku {
         return answer;
     }
 
-    public static void main(String[] args) {
 
-    }
 
 }
