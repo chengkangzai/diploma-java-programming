@@ -5,6 +5,9 @@
  */
 package sudoku;
 
+
+
+
 /**
  *
  * @author ASUS
@@ -25,6 +28,7 @@ public class Main extends GUI {
             System.out.println("nah");
         }
         System.exit(0);
+        
         
     }
 }
